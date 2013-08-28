@@ -1,0 +1,28 @@
+%div{:align => "center"}
+  %h1 Lista de Usuários
+  %table
+    %tr
+      %th
+      %th Nome
+      %th E-mail
+      %th Validação
+      %th Telefone
+      %th Idade
+      %th Sobre
+    -@users.each do |user|
+      %tr.user
+        %td
+          %img{width: "47", height: "50" ,src: "#{user.image.to_s}" }
+        %td= link_to "#{user.name}", user
+        %td= user.email
+        %td= user.tested
+        %td= user.phone
+        %td= user.age
+        %td= user.about
+        %td= link_to 'Editar', edit_user_path(user)
+        %td= link_to 'Apagar', user, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+%center
+  %h2
+    = link_to 'Novo Usuario', new_user_path
+.clear

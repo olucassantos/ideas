@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @admin.name
+%p
+  %b Email:
+  = @admin.email
+%p
+  %b Code:
+  = @admin.code
+%p
+  %b Phone:
+  = @admin.phone
+%p
+  %b Age:
+  = @admin.age
+%p
+  %b Status:
+  = @admin.status
+
+= link_to 'Editar', edit_admin_path(@admin), class:"linkButton"
+\|
+= link_to 'Voltar', admins_path, class:"linkButton"
+.clear

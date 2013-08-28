@@ -1,0 +1,43 @@
+.HeadProfile
+  %table
+    %tr
+      %td
+        .ProfileImage
+          - if @user.image
+            %img.Profile{src: "#{@user.image.to_s}"}
+            %br
+            =link_to "Atualizar cadastro", "/users/#{@user.id}/edit", class: "linkButton"
+          - else
+            %img.Profile{src: "/images/pensar.png"}
+            %br
+            =link_to "Atualizar cadastro", "/users/#{@user.id}/edit", class: "linkButton"
+      %td
+        .ProfileData
+          .ProfileName
+            =@user.name
+          .ProfileAge
+            = @user.age.day.to_s + "/" + @user.age.month.to_s + "/" + @user.age.year.to_s if @user.age
+          .ProfileAbout
+            =@user.about
+.TheoriesIndex
+  %table
+    %tr
+      %td
+        .OwnerAdoptions
+          %center
+            %h2 Ideias Adotadas
+            -@user.adoptions.each do |adoption|
+              %li
+                =link_to "#{adoption.theory.title}", adoption.theory
+                |
+                =link_to "Diario", journal_adoption_path(adoption)
+      %td
+        .OwnerIdeas
+          %center
+            %h2 Minhas Ideias
+            -if @theory
+              - @theory.each do |theory|
+                %li
+                  =link_to "#{theory.title} - #{theory.created_at.day}/#{theory.created_at.month}", "/theories/#{theory.id}"
+            - else
+              %p Não encontrei ideias, que pertencem a você;

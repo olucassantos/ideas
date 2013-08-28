@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Theory:
+  = @adoption.theory_id
+%p
+  %b User:
+  = @adoption.user_id
+%p
+  %b Rating:
+  = @adoption.rating
+
+= link_to 'Edit', edit_adoption_path(@adoption)
+\|
+= link_to 'Back', adoptions_path
+.clear

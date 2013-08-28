@@ -1,0 +1,21 @@
+%p#notice= notice
+#content
+  -@categories.each do |category|
+    =link_to "#{category.title}", "/categories/#{category.id}/theories", class: "linkButton"
+  %br
+  %br
+  .container
+    %ul.thumb
+      - @theories.each do |theory|
+        %li
+          %a{href: "/theories/#{theory.id}"}
+            -if theory.image
+              %img{alt: "#{theory.title}", src: "#{theory.image.to_s}"}
+            -else
+              %img{alt: "#{theory.title}", src: "/images/pensar.png"}
+            -if session[:kind] == 2
+              %li
+                %td= link_to 'Ver', theory, class: "linkButton"
+                %td= link_to 'Alterar', edit_theory_path(theory), class: "linkButton"
+                %td= link_to 'Apagar', theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
+.clear

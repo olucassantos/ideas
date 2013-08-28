@@ -1,0 +1,25 @@
+= form_for(@user, :html =>{:multipart => true}) do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = "Algo não me deixou criar este usuario."
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %center
+            =msg
+
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email
+  .field
+    = f.label :code
+    %br/
+    = f.password_field :plain_code
+  .actions
+    = f.submit
+

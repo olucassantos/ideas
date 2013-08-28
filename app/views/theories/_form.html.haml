@@ -1,0 +1,55 @@
+= form_for(@theory, :html =>{:multipart => true}) do |f|
+  -if @theory.errors.any?
+    #error_explanation
+      %h2
+        = "Algo não me deixou salvar esta ideia."
+        %br
+        = "Não esqueça de colocar a imagen Novamente."
+
+      %ul
+        - @theory.errors.full_messages.each do |msg|
+          %center
+            = msg
+  = render 'shared/image_field', f: f
+  .field
+    -if params[:user]
+      = hidden_field_tag :user_id, params[:user]
+  .field
+    Titulo
+    %br/
+    = f.text_field :title
+  .field
+    Descrição:
+    %br/
+    = f.text_area :description
+  .field
+    Justificativa:
+    %br/
+    = f.text_area :justification
+  .field
+    Resumo:
+    %br/
+    = f.text_area :brief
+  .field
+    Gastos:
+    %br/
+    = f.text_field :outlay
+  .field
+    = f.radio_button :choice, true, checked: true
+    = f.label "Alguem desenvolva"
+    = f.radio_button :choice, false
+    = f.label "Alguem Financie"
+  .field
+    = f.radio_button :kind, true, checked: true
+    = f.label "Publica"
+    = f.radio_button :kind, false
+    = f.label "Privada"
+  .field
+    %p
+    Categorias
+    %br/
+    - Category.find(:all).each do |category|
+      = check_box_tag "theory[category_ids][]", category.id, @theory.categories.include?(category)
+      = category.title
+  .actions
+    = f.submit

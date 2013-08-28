@@ -1,0 +1,16 @@
+= form_for @adoption do |f|
+  - if @adoption.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@adoption.errors.count, "error")} prohibited this adoption from being saved:"
+      %ul
+        - @adoption.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    Id da Ideia
+    = f.number_field :theory_id
+  .field
+    Id do Usuario
+    = f.number_field :user_id
+  .actions
+    = f.submit 'Salvar', class:"linkButton"

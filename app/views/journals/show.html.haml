@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%p
+  %b Adoção:
+  = @journal.adoption.theory.title
+  %br
+  %b
+    = @journal.description
+    %br
+  -if @journal.image
+    %img{width: "400", height: "300" ,src: "#{@journal.image.to_s}" }
+  -else
+    %img{width: "400", height: "300" ,src: "/images/pensar.png" }
+
+= link_to 'Editar', edit_journal_path(@journal), class:"linkButton"
+=link_to 'Voltar', "/adoptions/#{@journal.adoption.id}/journal", class:"linkButton"
+.clear

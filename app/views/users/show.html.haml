@@ -1,0 +1,8 @@
+%p#notice= notice
+%p
+  -if @user.tested == true
+    =render 'tested'
+  -else
+    - if !@user.tested == true
+      =render 'nottested'
+.clear

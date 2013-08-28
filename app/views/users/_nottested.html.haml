@@ -1,0 +1,11 @@
+.titleAnotes
+  %h1
+    = "Bem vindo ao Ideas #{@user.name} !"
+  .content
+    %h2
+      Seu cadastro ainda não foi validado. É necessario que você entre em seu e-mail e confirme-o !
+  .link_edit
+    %h1
+      =link_to "Enviar link de confirmação" , "/users/#{@user.id}/send"
+
+

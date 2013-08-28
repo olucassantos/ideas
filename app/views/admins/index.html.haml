@@ -1,0 +1,28 @@
+%center
+  %h1 Lista de Administradores
+
+  %table
+    %tr
+      %th Nome
+      %th Email
+      %th Telefone
+      %th Idade
+      %th Status
+      %th
+      %th
+      %th
+
+    - @admins.each do |admin|
+      %tr
+        %td= link_to "#{admin.name}", admin
+        %td= admin.email
+        %td= admin.phone
+        %td= admin.age
+        %td= admin.status
+        %td= link_to 'Editar', edit_admin_path(admin)
+        %td= link_to 'Apagar', admin, :method => :delete, :data => { :confirm => 'Tem certeza?' }
+
+  %br
+  %h3
+    = link_to 'Cadastar Novo Administrador', new_admin_path, class:"linkButton"
+.clear

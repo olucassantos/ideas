@@ -1,0 +1,59 @@
+%p#notice= notice
+.masterBox
+  .headerBox
+    %img.logoTheory{:src => "#{@theory.image.to_s}"}
+    .titleBox
+      .Title
+        = @theory.title
+      .Name
+        Por:
+        = @theory.user.name
+      .Brief
+        = @theory.brief
+      .Adoption
+        =link_to "Adote esta Ideia !", adopt_theory_path(@theory), class: "linkButton"
+  %center
+    .Content
+      %p
+        .Sub
+          O que é?
+          %br
+        .Text
+          = @theory.description
+      %p
+        .Sub
+          E porque precisamos?
+          %br
+        .Text
+          = @theory.justification
+      %p
+        .Sub
+          Quanto isso vai custar?
+        .Value
+          ="R$ " + @theory.outlay.to_s
+      %p
+        -if @theory.choice == true
+          %h2 Ideia publica
+        -else
+          %h2 Idea privada
+      %p
+        -if @theory.kind == true
+          %h2 Esperando alguem desenvolver !
+        -else
+          %h2 Esperando alguem me dinanciar!
+    .ContentAdoptions
+      %p
+        =render 'doar'
+        %h2 Usuarios que adotaram:
+      -if @theory.adoptions.first
+        -@theory.adoptions.each do |adoption|
+          =link_to "#{adoption.user.name}", "/users/#{adoption.user.id}", class: "nameTheory"
+      -else
+        %h2 Por enquanto ninguem adotou esta Ideia!
+.clear
+  -if @theory.user.id == session[:id] || session[:kind] == 2
+    =link_to 'Atualizar dados', edit_theory_path(@theory), class: "linkButton"
+    |
+    = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
+    |
+  =link_to 'Voltar', theories_path, class: "linkButton"

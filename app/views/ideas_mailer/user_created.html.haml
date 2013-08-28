@@ -1,0 +1,24 @@
+%h1
+  Ideas
+  %br
+  ="Olá " + @dados.name + "," if @dados
+.title{style: "text-align: left;"}
+  %h1 Detectamos seu cadastro em nosso site, e precisamos que você o confirme.
+
+%h3
+  Para confirmar seu cadastro clique no link a seguir:
+  =link_to "Confimar Cadastro", "http://192.168.0.124:3000/users/#{@dados.token}/confirm" if @dados
+
+%h3
+  Quando sua primeira ideia for criada, lembre-se que para receber doações, voce precisa de uma conta no pagseguro, como vendedor, e para se cadastrar, basta entrar no link:
+  =link_to "PagSeguro" , "http://pagseguro.uol.com.br/registration/registration.jhtml?tipo=cadastro#!vendedor"
+%h3
+  Lembre-se que é necessario utilizar o email
+  =@dados.email + ", para se cadastrar." if @dados
+  %br
+  %br
+%h4 Caso não tenha efetuado este cadastro, favor desconsiderar este e-mail.
+%h5 Caso o link acima não funcione, copie e cole em seu navegador : https://pagseguro.uol.com.br/registration/registration.jhtml?tipo=cadastro#!vendedor
+%h5
+  Caso o link acima não funcione, copie e cole em seu navegador :
+  = "http://192.168.0.126:3000/users/#{@dados.token}/confirm"
