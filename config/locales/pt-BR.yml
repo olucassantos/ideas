@@ -211,7 +211,8 @@ pt-BR:
     errors:
       <<: *errors
     models:
-      user : "Usuario"
+      user : "Usuário"
+      theory : "Ideia"
     attributes:
        user:
         name: "Nome"
