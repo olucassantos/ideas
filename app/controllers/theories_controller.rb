@@ -85,7 +85,7 @@ class TheoriesController < ApplicationController
         redirect_to "/theories"
     else
       flash[:notice] = "Você esta cadastrado mas ainda não confirmou seu perfil."
-      redirect_to "users/#{session[:id]}"
+      redirect_to "/users/#{session[:id]}"
     end
   end
 

@@ -37,4 +37,9 @@ FactoryGirl.define do
     view 150
   end
 
+  factory :adoption do
+    user_id 1
+    theory_id 1
+  end
+
 end
