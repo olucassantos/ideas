@@ -35,10 +35,8 @@ class UsersController < ApplicationController
       @user = User.new
       respond_with @user
     else
-      if session[:kind == 1]
-        redirect_to "/"
         flash[:notice] = "Você já esta cadastrado."
-      end
+        redirect_to "/"
     end
   end
 

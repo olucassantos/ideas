@@ -19,6 +19,7 @@ class Theory < ActiveRecord::Base
         has_many :adoptions,  dependent: :destroy
         has_one :image, as: :imageable,  dependent: :destroy
         has_and_belongs_to_many :categories
+        has_many :votes
 
 
 

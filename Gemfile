@@ -27,10 +27,10 @@ gem 'haml-rails'
 gem 'mini_magick'
 
 group :test do
-  gem 'rspec-rails', '2.14.0'
+ gem 'rspec-rails', '2.14.0'
   gem 'factory_girl_rails'
-  gem 'rspec-rails','2.14.0'
-  gem 'rspec-rails-controller'
+  #gem 'rspec-rails','2.14.0'
+  #gem 'rspec-rails-controller'
 end
 
 # To use ActiveModel has_secure_password

@@ -8,7 +8,7 @@ class TheoriesController < ApplicationController
   def logged?
     if !session[:id]
       redirect_to "/entrar"
-      flash[:notice] = "Voce precisa estar cadastrado para acessar as ideias."
+      flash[:notice] = "Você precisa estar cadastrado para acessar as ideias."
     end
   end
 
