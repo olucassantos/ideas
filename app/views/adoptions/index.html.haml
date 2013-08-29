@@ -1,0 +1,22 @@
+%h1 Adoções
+
+%table
+  %tr
+    %th Ideia
+    %th Usuario
+    %th
+    %th
+    %th
+
+  - @adoptions.each do |adoption|
+    %tr
+      %td= adoption.theory_id
+      %td= adoption.user_id
+      %td= link_to 'Mostar', adoption
+      %td= link_to 'Editar', edit_adoption_path(adoption)
+      %td= link_to 'Apagar', adoption, :method => :delete, :data => { :confirm => 'Tem certeza?' }
+
+%br
+
+= link_to 'Nova Adoção', new_adoption_path
+.clear

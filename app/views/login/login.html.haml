@@ -1,0 +1,14 @@
+%h1{align: "center"}
+  Bem vindo de volta!
+%center
+  %p#notice= notice
+= form_tag "/entrar" do
+  %p{align: "center"}
+    %label{:for => "email"} E-mail
+    %input#email{:name => "email", :type => "email"}/
+  %p{align: "center"}
+    %label{:for => "password"} Senha
+    %input#code{:name => "code", :type => "password"}/
+  %p{align: "center"}
+    %input{:type => "submit", :value => "Autenticar"}/
+.clear

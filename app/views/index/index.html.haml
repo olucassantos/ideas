@@ -1,0 +1,59 @@
+%html
+  %h1
+    .notice{align: "center"}
+      %p#notice= notice
+  .Slider
+    #slideshowHolder
+      %img{alt: "Bem vindo ao site, cadastre-se !", :src => "/images/rasgadocadastre.png"}
+        %a{href: "/users/new"}
+      %img{alt: "Compartilhe uma ideia, um dia pode ser um grande projeto !", :src => "/images/rasgadocompartilhe.png"}
+        %a{href: "/theories/new"}
+      %img{alt: "Divulgue o site !", :src => "/images/rasgadodivulgue.png"}
+        %a{href: "/"}
+  %br
+  .TheoriesIndex
+    .lastTheories
+      %center
+        %h2 Ultimas Ideias
+      -@lasts.each do |last|
+        .boxes
+          .imageIdea
+            %img.logo{src: "#{last.image.to_s}"}
+          .dataIdea
+            = "Não encontrei nenhuma !dea." if !last
+            = link_to "#{last.title}" , "theories/#{last.id}", class: "titleLinkIndex" if last
+            %br
+            = "O que é?" if last
+            %br
+            = last.brief if last
+            %br
+            = "Views:" if last
+            =last.view if last
+            %br
+            = "Por:" if last
+            =link_to "#{last.user.name}", "/users/#{last.user.id}", class: "nameLinkIndex" if last
+        %br
+
+    .mostViews
+      %center
+        %h2 Ideias Mais Vistas
+      -@theories.each do |theory|
+        .boxes
+          .imageIdea
+            %img.logo{src: "#{theory.image.to_s}"}
+          .dataIdea
+            = "Não encontrei nenhuma !dea." if !theory
+            = link_to "#{theory.title}" , "theories/#{theory.id}", class: "titleLinkIndex" if theory
+            %br
+            O que é?
+            %br
+            = theory.brief if theory
+            %br
+            Views:
+            =theory.view if theory
+            %br
+            Por:
+            =link_to "#{theory.user.name}", "/users/#{theory.user.id}", class: "nameLinkIndex" if theory
+        %br
+.clear
+

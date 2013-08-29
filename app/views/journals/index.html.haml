@@ -1,0 +1,23 @@
+%h1 Diarios
+
+%table
+  %tr
+    %th Foto
+    %th Adoção
+    %th Descrição
+    %th
+    %th
+    %th
+
+  - @journals.each do |journal|
+    %tr
+      %td
+        %img{width: "47", height: "50" ,src: "#{journal.image.to_s}" }
+      %td= journal.adoption_id
+      %td= journal.description
+      %td= link_to 'Mostrar', journal
+      %td= link_to 'Editar', edit_journal_path(journal)
+      %td= link_to 'Apagar', journal, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+.clear

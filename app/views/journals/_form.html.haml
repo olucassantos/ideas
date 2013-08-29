@@ -1,0 +1,20 @@
+= form_for @journal, html: {:multipart => true} do |f|
+  - if @journal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@journal.errors.count, "error")} prohibited this journal from being saved:"
+      %ul
+        - @journal.errors.full_messages.each do |msg|
+          %li= msg
+  %h2
+    %p Coloque os dados do novo diario, data e hora são colocados automaticamente.
+  .field
+    =f.hidden_field :adoption_id
+  .field
+    %h2 Não deixe de colocar uma Foto !!!
+    = render 'shared/image_field', :f => f
+  .field
+    %h2 Descrição
+    = f.text_area :description
+  .actions
+    = f.submit 'Criar'
+
