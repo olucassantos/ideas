@@ -25,6 +25,11 @@ FactoryGirl.define do
     title 'Categoria'
   end
 
+  factory :journal do
+    description 'Teste usado para testar os journals nas factories com 50 caracteres'
+    adoption_id '1'
+  end
+
   factory :theory do
     title 'Planetariun'
     description 'Descição para a ideia, pode ter caracteres infinitos'

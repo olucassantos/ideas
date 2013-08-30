@@ -213,6 +213,10 @@ pt-BR:
     models:
       user : "Usuário"
       theory : "Ideia"
+      journal: "Diário"
+      images: "Imagens"
+      categories: "Categorias"
+      admins: "Administradores"
     attributes:
        user:
         name: "Nome"
@@ -221,6 +225,29 @@ pt-BR:
         tested: "Autenticação"
         age: "Idade"
         phone: "Telefone"
+       theory:
+        title: "Título"
+        description: "Descrição"
+        justification: "Justificativa"
+        brief: "Resumo"
+        views: "Visualizações"
+        outlay: "Gastos"
+        choice: "Escolha"
+        kind: "Tipo"
+       journal:
+        description: "Descrição"
+        adoption_id: "Id da adoção"
+       image:
+        title: "Titulo"
+       categorie:
+        title: "Titulo"
+       admin:
+        name: "Nome"
+        email: "Email"
+        code: "Senha"
+        phone: "Telefone"
+        age: "Idade"
+        status: "Estatus"
   views:
     pagination:
       previous: "&laquo;"
