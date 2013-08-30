@@ -51,10 +51,15 @@ class JournalsController < ApplicationController
 
   def edit
     @journal = Journal.find(params[:id]) rescue nil
-    if @journal
-      respond_with @journal
+      if @journal
+          if @journal.adoption.user == owner
+            respond_with @journal
+            else
+              flash[:notice] = "Você não pode alterar um diário que não te pertence."
+              redirect_to "/users/#{session[:id]}"
+          end
     else
-      redirect_to "/404"
+        redirect_to "/404"
     end
   end
 

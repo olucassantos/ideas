@@ -10,8 +10,7 @@ describe AdoptionsController do
   describe "When not logged" do
 
     context 'GET index' do
-      it 'should redirect to entrar' do
-        login_user(@user)
+      it 'should redirect to index' do
         get :index
         response.should redirect_to "/"
       end

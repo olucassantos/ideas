@@ -3,6 +3,22 @@ class CategoriesController < ApplicationController
  layout'empty'
  respond_to 'html'
 
+ before_filter :logged?
+ before_filter :admin?, except: [:theories]
+
+  def logged?
+    if !session[:id]
+        redirect_to "/"
+    end
+  end
+
+  def admin?
+    if session[:kind] != 2
+      flash[:notice] = "Você não é um administrador do site."
+      redirect_to "/"
+    end
+  end
+
   def index
     @categories = Category.all
     respond_with :html
