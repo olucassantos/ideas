@@ -51,7 +51,7 @@ class LoginController < ApplicationController
         session[:name] = admin.name
         session[:status] = admin.status
         session[:kind] = 2
-        redirect_to "/entrar"
+        redirect_to "/"
       end
 
       if  kind == 1

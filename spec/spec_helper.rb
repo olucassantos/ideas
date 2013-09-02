@@ -64,6 +64,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   # Use color in STDOUT
   config.color_enabled = true
+  Capybara.javascript_driver = :webkit
+  config.include Capybara::DSL
 
   # Use color not only in STDOUT but also in pagers and files
   config.tty = true
