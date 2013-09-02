@@ -27,51 +27,27 @@ class LoginController < ApplicationController
         return
       end
 
-      user = User.auth(email, code)
+      user  = User.auth(email,code)
       admin = Admin.auth(email,code)
 
-      if !user
-        kind = nil
-        if !admin
-          kind = nil
-          flash[:notice] = "Não foi possivel validar seu login."
-        end
+      if !user && !admin
+        flash[:notice] = "Não foi possivel validar seu login."
+        return
       end
 
-      if user
-        kind = 1
-      end
-
-        if admin
-          kind = 2
-        end
-
-      if  kind == 2
-        session[:id] = admin.id
-        session[:name] = admin.name
-        session[:status] = admin.status
-        session[:kind] = 2
-        redirect_to "/"
-      end
-
-      if  kind == 1
-        session[:id] = user.id
-        session[:name] = user.name
-        session[:tested] = user.tested
-        session[:kind] = 1
-        redirect_to "/"
-      end
-
+      session[:id]     = admin ? admin.id   : user.id
+      session[:name]   = admin ? admin.name : user.name
+      session[:tested] = admin ? nil : user.tested
+      session[:status] = admin ? admin.status : nil
+      session[:kind]   = admin ? 2 : 1
+      redirect_to "/"
     end
   end
 
   def logout
-    session[:id] = nil
-    session[:name] = nil
-    session[:admin] = nil
-    session[:status] = nil
-    session[:kind] = nil
-    session[:tested] = nil
+    [:id,:name,:admin,:status,:kind,:tested].each do |key|
+      session[key] = nil
+    end
     redirect_to "/"
   end
 end
