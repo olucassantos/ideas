@@ -39,7 +39,7 @@ describe 'Login' do
         expect(page).to have_text("Informe o email")
     end
 
-    it 'should not login if is invalid user', driver: :selenium do
+    it 'should not login if is invalid user' do
       visit '/entrar'
       fill_in 'email' , with: 'o.lucasug@jua.com'
       fill_in 'code', with: 'aiasd'
@@ -52,7 +52,25 @@ describe 'Login' do
       fill_in 'email', with: @user.email
       fill_in 'code', with: '123456'
       click_button 'Autenticar'
-      expect(page).to have_text("Logado como: ")
+      expect(page).to have_text("Logado como: #{@user.name} ")
+    end
+  end
+
+  describe 'Logout' do
+
+    before :each do
+      @user = FactoryGirl.create(:user)
+      visit '/entrar'
+      fill_in 'email', with: @user.email
+      fill_in 'code', with: '123456'
+      click_button 'Autenticar'
+    end
+
+
+    it 'should redirect to index, in logout' do
+      visit '/'
+      click_link 'Sair'
+      expect(page).to have_link('Login')
     end
   end
 end
