@@ -52,7 +52,7 @@ class JournalsController < ApplicationController
   def edit
     @journal = Journal.find(params[:id]) rescue nil
       if @journal
-          if @journal.adoption.user == owner
+          if @journal.adoption.user == owner || session[:kind] == 2
             respond_with @journal
             else
               flash[:notice] = "Você não pode alterar um diário que não te pertence."
@@ -72,7 +72,7 @@ class JournalsController < ApplicationController
   def update
     @journal = Journal.find(params[:id])
       flash[:notice] = "Atualizado com sucesso." if @journal.update_attributes(params[:journal])
-      respond_with @journal
+      redirect_to journal_path
   end
 
   def destroy
