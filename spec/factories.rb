@@ -2,9 +2,9 @@
 FactoryGirl.define do
 
   factory :user do
-    name 'Lucas Anjos dos Santos'
-    code '123asda'
-    email 'o.lucas.santos@live.com'
+    name 'João Macaco'
+    plain_code '123456'
+    email 'oargus.g@gmail.com'
     age '1994-08-22'
     tested true
     phone '1836064460'
@@ -14,7 +14,7 @@ FactoryGirl.define do
 
   factory :admin do
     name 'Lucas Anjos dos Santos'
-    code '123asd'
+    plain_code '123asd'
     email 'o.lucas.santos@live.com'
     age '1994-08-22'
     status true

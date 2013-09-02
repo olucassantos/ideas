@@ -39,7 +39,7 @@ describe 'Login' do
         expect(page).to have_text("Informe o email")
     end
 
-    it 'should not login if is invalid user' do
+    it 'should not login if is invalid user', driver: :selenium do
       visit '/entrar'
       fill_in 'email' , with: 'o.lucasug@jua.com'
       fill_in 'code', with: 'aiasd'
@@ -49,11 +49,10 @@ describe 'Login' do
 
     it 'should login when are right and go to index' do
       visit '/entrar'
-      fill_in 'email', with:'o.lucas.santos@live.com'
-      fill_in 'code', with:'123asda'
+      fill_in 'email', with: @user.email
+      fill_in 'code', with: '123456'
       click_button 'Autenticar'
-      p current_path
-      expect(page).to have_text("Logado como:")
+      expect(page).to have_text("Logado como: ")
     end
   end
 end

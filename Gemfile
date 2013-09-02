@@ -21,6 +21,7 @@ group :test do
  gem 'rspec-rails', '2.13.0'
   gem 'factory_girl_rails'
   gem 'capybara', '2.1.0'
+  gem 'selenium-webdriver', '2.35.1'
 end
 group :development do
   gem 'guard-rspec'
