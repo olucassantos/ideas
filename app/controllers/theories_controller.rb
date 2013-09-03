@@ -12,58 +12,54 @@ class TheoriesController < ApplicationController
   end
 
   def adopt
-    if session[:tested]
-      @theory = Theory.find( params[:id] ) rescue nil
-      if !@theory
-        redirect_to "/404"
-        return
-      end
-
-      @a ||= []
-      @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
-      if @a == []
-        @adoption = true
-      else
-        @adoption = false
-      end
-
-      if @adoption == false
-        flash[:notice] = "Opa! Você já adotou esta ideia!"
-        redirect_to "/users/#{session[:id]}"
-        return
-      end
-
-        Adoption.create(theory_id: @theory.id,user_id: session[:id])
-        redirect_to "/theories/adopted"
+    @theory = Theory.find( params[:id] ) rescue nil
+    if !@theory
+      redirect_to "/404"
+      return
     end
+
+    @a ||= []
+    @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
+    if @a == []
+      @adoption = true
+    else
+      @adoption = false
+    end
+
+    if @adoption == false
+      flash[:notice] = "Opa! Você já adotou esta ideia!"
+      redirect_to "/users/#{session[:id]}"
+      return
+    end
+
+    Adoption.create(theory_id: @theory.id,user_id: session[:id])
+    redirect_to "/theories/adopted"
   end
 
   def abandon
-    if session[:tested]
-      @theory = Theory.find( params[:id] ) rescue nil
-      if !@theory
-        redirect_to "/404"
-        return
-      end
-
-      @a ||= []
-      @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
-      if @a == []
-        @adoption = false
-      else
-        @adoption = true
-      end
-
-      if !@adoption
-        flash[:notice] = "Opa! você não adotou esta ideia!"
-        redirect_to "/users/#{session[:id]}"
-        return
-      end
-        @a.first.journals.delete_all if @a.first.journals
-        @a.first.destroy
-        flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
-        redirect_to "/theories"
+    @theory = Theory.find( params[:id] ) rescue nil
+    if !@theory
+      redirect_to "/404"
+      return
     end
+
+    @a ||= []
+    @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
+    if @a == []
+      @adoption = false
+    else
+      @adoption = true
+    end
+
+    if !@adoption
+      flash[:notice] = "Opa! você não adotou esta ideia!"
+      redirect_to "/users/#{session[:id]}"
+      return
+    end
+    @a.first.journals.delete_all if @a.first.journals
+    @a.first.destroy
+    flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
+    redirect_to "/theories"
   end
 
   def index
