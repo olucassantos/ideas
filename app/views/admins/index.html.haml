@@ -7,7 +7,6 @@
       %th Email
       %th Telefone
       %th Idade
-      %th Status
       %th
       %th
       %th
@@ -18,7 +17,6 @@
         %td= admin.email
         %td= admin.phone
         %td= admin.age
-        %td= admin.status
         %td= link_to 'Editar', edit_admin_path(admin)
         %td= link_to 'Apagar', admin, :method => :delete, :data => { :confirm => 'Tem certeza?' }
 

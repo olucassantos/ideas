@@ -25,8 +25,7 @@ describe 'AdoptionsController' do
     it 'should have a link to show adoption' do
       visit '/'
       click_link ('Adoções')
-      click_link ('Mostrar')
-      expect(page).to have_text("Adoção")
+      click_link ('Nova Adoção')
     end
 
 

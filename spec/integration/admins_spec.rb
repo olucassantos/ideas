@@ -43,8 +43,7 @@ describe 'AdminsController' do
     end
   end
 
-    context 'when logged not logged' do
-
+    context 'when not logged' do
     it 'should enter page index of admin' do
       visit '/'
       expect(page).to_not have_link('Administradores')

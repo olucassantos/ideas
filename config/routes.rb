@@ -2,9 +2,7 @@ Ideia::Application.routes.draw do
 
   resources :votes
 
-
   resources :journals
-
 
   resources :adoptions do
     member do
@@ -18,18 +16,14 @@ Ideia::Application.routes.draw do
     end
   end
 
-
-
   resources :admins
-
-
-  post "register/new"
-  get "index/index"
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  post "register/new"
+  get "index/index"
   get "users/message_return"
   get "login/login"
   post "login/login"

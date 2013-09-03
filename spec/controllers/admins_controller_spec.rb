@@ -56,10 +56,9 @@ describe AdminsController do
         @nadmin.name = "Poderoso chefão"
         @nadmin.email = "o.lcuas.sasanto@live.com"
         @nadmin.age = "1995-08-05"
-        @nadmin.status = true
         @nadmin.phone = "1836064460"
         should_not eq('Admin.count') do
-          post :create, theory: {name: @admin.name, email: @admin.email,age: @admin.age, status: @admin.status, phone: @admin.status}
+          post :create, admin: {name: @admin.name, email: @admin.email,age: @admin.age, phone: @admin.phone}
         end
         response.should be_success
       end

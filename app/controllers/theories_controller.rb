@@ -13,19 +13,24 @@ class TheoriesController < ApplicationController
 
   def adopt
     @theory = Theory.find( params[:id] ) rescue nil
-    if !@theory
-      redirect_to "/404"
-      return
-    end
+      if !@theory
+        redirect_to "/404"
+        return
+      end
 
-    if @theory.adopted_by?(session[:id]).size>0
-      flash[:notice] = "Opa! Você já adotou esta ideia!"
-      redirect_to "/users/#{session[:id]}"
-      return
-    end
+      if @theory.choice == true
+        if @theory.adopted_by?(session[:id]).size>0
+          flash[:notice] = "Opa! Você já adotou esta ideia!"
+          redirect_to "/users/#{session[:id]}"
+          return
+        end
 
-    Adoption.create(theory_id: @theory.id,user_id: session[:id])
-    redirect_to "/theories/adopted"
+        Adoption.create(theory_id: @theory.id,user_id: session[:id])
+        redirect_to "/theories/adopted"
+      else
+        flash[:notice] = "Desculpe, mas o dono da ideia, deseja deixa-la privada."
+        redirect_to user_path(session[:id])
+      end
   end
 
   def abandon

@@ -6,6 +6,7 @@ describe 'Login' do
   describe 'user account' do
     before :each do
       @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:admin)
     end
 
     it 'should login' do
@@ -48,17 +49,21 @@ describe 'Login' do
     end
 
     it 'should login when are right and go to index' do
-      pwd = "teste"
-      @user.plain_code = pwd
-      @user.save.should be_true
-
       visit '/entrar'
       fill_in 'email', with: @user.email
-<<<<<<< HEAD
       fill_in 'code', with: '123456'
       click_button 'Autenticar'
       expect(page).to have_text("Logado como: #{@user.name} ")
     end
+
+    it 'should login as admin when are right and go to index' do
+      visit '/entrar'
+      fill_in 'email', with: @admin.email
+      fill_in 'code', with: '123456'
+      click_button 'Autenticar'
+      expect(page).to have_text("Logado como: #{@admin.name} ")
+    end
+
   end
 
   describe 'Logout' do
@@ -76,12 +81,6 @@ describe 'Login' do
       visit '/'
       click_link 'Sair'
       expect(page).to have_link('Login')
-=======
-      fill_in 'code' , with: pwd
-      click_button 'Autenticar'
-
-      expect(page).to have_text("Logado como: #{@user.name}")
->>>>>>> 36d7cd192d298ede687b7e63ea3d3134ac3e6a8f
     end
   end
 end

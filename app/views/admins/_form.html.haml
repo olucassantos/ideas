@@ -21,9 +21,6 @@
   .field
     Idade:
     = f.date_select :age, start_year: 90.years.ago.year, end_year: 10.years.ago.year
-  .field
-    Estado:
-    = f.check_box :status
   .actions
     = f.submit 'Criar', class:"linkButton"
     %br

@@ -11,7 +11,8 @@
       .Brief
         = @theory.brief
       .Adoption
-        =link_to "Adote esta Ideia !", adopt_theory_path(@theory), class: "linkButton"
+        -if @theory.choice == true
+          =link_to "Adote esta Ideia !", adopt_theory_path(@theory), class: "linkButton"
   %center
     .Content
       %p
@@ -33,23 +34,24 @@
           ="R$ " + @theory.outlay.to_s
       %p
         -if @theory.choice == true
-          %h2 Ideia publica
+          %h2 Ideia pública
         -else
-          %h2 Idea privada
+          %h2 Idea privada.
       %p
         -if @theory.kind == true
-          %h2 Esperando alguem desenvolver !
+          %h2 Esperando alguém desenvolver !
         -else
-          %h2 Esperando alguem me dinanciar!
+          %h2 Esperando alguém me financiar !
     .ContentAdoptions
       %p
-        =render 'doar'
+        -if @theory.kind == true
+          =render 'doar'
         %h2 Usuarios que adotaram:
       -if @theory.adoptions.first
         -@theory.adoptions.each do |adoption|
           =link_to "#{adoption.user.name}", "/users/#{adoption.user.id}", class: "nameTheory"
       -else
-        %h2 Por enquanto ninguem adotou esta Ideia!
+        %h2 Por enquanto ninguém adotou esta Ideia!
 .clear
   -if @theory.user.id == session[:id] || session[:kind] == 2
     =link_to 'Atualizar dados', edit_theory_path(@theory), class: "linkButton"

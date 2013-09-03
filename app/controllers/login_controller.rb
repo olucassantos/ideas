@@ -38,14 +38,13 @@ class LoginController < ApplicationController
       session[:id]     = admin ? admin.id   : user.id
       session[:name]   = admin ? admin.name : user.name
       session[:tested] = admin ? nil : user.tested
-      session[:status] = admin ? admin.status : nil
       session[:kind]   = admin ? 2 : 1
       redirect_to "/"
     end
   end
 
   def logout
-    [:id,:name,:admin,:status,:kind,:tested].each do |key|
+    [:id,:name,:admin,:kind,:tested].each do |key|
       session[key] = nil
     end
     redirect_to "/"
