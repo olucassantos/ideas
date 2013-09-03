@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
       flash[:notice]="Você não é administrador do site."
     end
   end
+
+  def admin_session?
+    session[:kind]==2
+  end
 end

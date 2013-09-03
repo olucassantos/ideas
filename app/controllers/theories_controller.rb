@@ -12,7 +12,6 @@ class TheoriesController < ApplicationController
   end
 
   def adopt
-
     if session[:tested]
       @theory = Theory.find( params[:id] ) rescue nil
       if !@theory
@@ -85,13 +84,13 @@ class TheoriesController < ApplicationController
   end
 
   def new
-      if session[:kind] == 2
+      if admin_session?
         flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
         redirect_to "/"
       return
     end
 
-    if session[:tested] || session[:kind] == 2
+    if session[:tested] || admin_session?
       @theory = Theory.new
       respond_with @theory
     else
@@ -103,7 +102,7 @@ class TheoriesController < ApplicationController
   def edit
     @theory = Theory.find(params[:id]) rescue nil
     if @theory
-      if @theory.user.id == session[:id] || session[:kind] == 2
+      if @theory.user.id == session[:id] || admin_session?
         @theory = Theory.find(params[:id])
         respond_with @theory
       else
@@ -116,13 +115,13 @@ class TheoriesController < ApplicationController
   end
 
   def create
-   if session[:kind] == 2
+   if admin_session?
       flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
       redirect_to "/"
       return
     end
 
-   if session[:tested] && session[:kind] == 1
+   if session[:tested] && !admin_session?
       @theory = user_find.theories.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
       respond_with @theory
@@ -137,7 +136,7 @@ class TheoriesController < ApplicationController
   end
 
   def update
-     if session[:tested] || session[:kind] == 2
+     if session[:tested] || admin_session?
         params[:theory][:category_ids] ||= []
         @theory = Theory.find(params[:id])
         flash[:notice] = "Dados da ideia atualizados com sucesso." if @theory.update_attributes(params[:theory])
@@ -150,7 +149,7 @@ class TheoriesController < ApplicationController
 
   def destroy
     @theory = Theory.find(params[:id])
-    if session[:kind] == 2 || session[:id] == @theory.user.id
+    if admin_session? || session[:id] == @theory.user.id
       flash[:notice] = "Infelizmente a ideia foi apagada." if @theory.destroy
       redirect_to "/theories"
     else
@@ -163,12 +162,12 @@ class TheoriesController < ApplicationController
   def tested?
     if !session[:tested]
       flash[:notice] = "Você esta cadastrado mas ainda não confirmou seu perfil."
-      redirect_to session[:kind]==2 ? "/" : "/users/#{session[:id]}"
+      redirect_to admin_session? ? "/" : "/users/#{session[:id]}"
     end
   end
 
   def tested_adoption?
-    if session[:kind]==2
+    if admin_session?
       flash[:notice] = "Opa! Uma administrador infelizmente não pode adotar uma ideia!"
       redirect_to "/"
       return
@@ -177,7 +176,7 @@ class TheoriesController < ApplicationController
   end
 
   def tested_abandon?
-    if session[:kind]==2
+    if admin_session?
       flash[:notice] = "Opa! Uma administrador não possui adoções para abandonar!"
       redirect_to "/"
       return
