@@ -15,7 +15,7 @@ FactoryGirl.define do
   factory :admin do
     name 'Lucas Anjos dos Santos'
     code '123asd'
-    email 'o.lucas.santos@live.com'
+    email 'o.lucas.santos.admin@live.com'
     age '1994-08-22'
     status true
     phone '1836064460'
@@ -27,7 +27,7 @@ FactoryGirl.define do
 
   factory :journal do
     description 'Teste usado para testar os journals nas factories com 50 caracteres'
-    adoption_id '1'
+    adoption
   end
 
   factory :theory do
@@ -42,9 +42,11 @@ FactoryGirl.define do
     view 150
   end
 
-  factory :adoption do
-    user_id 1
-    theory_id 1
+  factory :adoption, traits: [:singleton_user] do
+    theory
   end
 
+  trait :singleton_user do
+    user { User.where(email: FactoryGirl.attributes_for(:user)[:email]).first || FactoryGirl.create(:user) }
+  end
 end
