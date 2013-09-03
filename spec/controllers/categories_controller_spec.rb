@@ -11,49 +11,49 @@ describe CategoriesController do
     context 'GET index' do
       it 'should redirect to index' do
         get :index
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET show' do
       it 'should redirect to index' do
         get :show,id: @category
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET new' do
       it 'should redirect to index' do
         get :new
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET edit' do
       it 'should redirect to index' do
         get :edit,id: @category
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET create' do
       it 'should redirect to index' do
         get :create
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET update' do
       it 'should redirect to index' do
         get :update,id: @category
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
 
     context 'GET destroy' do
       it 'should redirect to index' do
         get :destroy,id: @category
-        response.should redirect_to "/"
+        response.should redirect_to "/entrar"
       end
     end
   end

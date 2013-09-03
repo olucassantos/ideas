@@ -5,13 +5,6 @@ class JournalsController < ApplicationController
 
   before_filter :logged?
 
-  def logged?
-    if !session[:id]
-      redirect_to "/entrar"
-      flash[:notice] = "Você está logado?"
-    end
-  end
-
   def owner
     User.find(session[:id])
   end

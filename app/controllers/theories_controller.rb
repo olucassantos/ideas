@@ -5,13 +5,6 @@ class TheoriesController < ApplicationController
   respond_to :html
   before_filter :logged? , :except => [:show]
 
-  def logged?
-    if !session[:id]
-      redirect_to "/entrar"
-      flash[:notice] = "Você precisa estar cadastrado para acessar as ideias."
-    end
-  end
-
   def user_find
     User.find(session[:id])
   end
