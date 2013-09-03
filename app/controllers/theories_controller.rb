@@ -16,7 +16,7 @@ class TheoriesController < ApplicationController
       return
     end
 
-    if session[:tested] == true
+    if session[:tested]
       @theory = Theory.find( params[:id] ) rescue nil
       if !@theory
         redirect_to "/404"
@@ -52,7 +52,7 @@ class TheoriesController < ApplicationController
       return
     end
 
-    if session[:tested] == true
+    if session[:tested]
       @theory = Theory.find( params[:id] ) rescue nil
       if !@theory
         redirect_to "/404"
@@ -67,7 +67,7 @@ class TheoriesController < ApplicationController
         @adoption = true
       end
 
-      if @adoption == false
+      if !@adoption
         flash[:notice] = "Opa! você não adotou esta ideia!"
         redirect_to "/users/#{session[:id]}"
         return
@@ -106,7 +106,7 @@ class TheoriesController < ApplicationController
       return
     end
 
-    if session[:tested] == true || session[:kind] == 2
+    if session[:tested] || session[:kind] == 2
       @theory = Theory.new
       respond_with @theory
     else
@@ -137,7 +137,7 @@ class TheoriesController < ApplicationController
       return
     end
 
-   if session[:tested] == true && session[:kind] == 1
+   if session[:tested] && session[:kind] == 1
       @theory = user_find.theories.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
       respond_with @theory
@@ -152,7 +152,7 @@ class TheoriesController < ApplicationController
   end
 
   def update
-     if session[:tested] == true || session[:kind] == 2
+     if session[:tested] || session[:kind] == 2
         params[:theory][:category_ids] ||= []
         @theory = Theory.find(params[:id])
         flash[:notice] = "Dados da ideia atualizados com sucesso." if @theory.update_attributes(params[:theory])
