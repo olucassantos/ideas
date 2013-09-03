@@ -93,5 +93,20 @@ describe Theory do
     theory.should_not be_valid
   end
 
+  context "adoption" do
+    it "should have a method to return if was already adopted by an user" do
+      theory.should respond_to :adopted_by?
+    end
 
+    it "should return empty array if not adopted by user" do
+      adoption = FactoryGirl.create(:adoption)
+      theory.adopted_by?(Time.now.to_i).size.should == 0
+    end
+
+    it "should return filled array if already adopted by user" do
+      adoption = FactoryGirl.create(:adoption)
+      theory   = adoption.theory
+      theory.adopted_by?(theory.user.id).size.should_not == 0
+    end
+  end
 end

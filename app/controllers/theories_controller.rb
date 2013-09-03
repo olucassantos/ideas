@@ -18,15 +18,7 @@ class TheoriesController < ApplicationController
       return
     end
 
-    @a ||= []
-    @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
-    if @a == []
-      @adoption = true
-    else
-      @adoption = false
-    end
-
-    if @adoption == false
+    if @theory.adopted_by?(session[:id]).size>0
       flash[:notice] = "Opa! Você já adotou esta ideia!"
       redirect_to "/users/#{session[:id]}"
       return
@@ -43,21 +35,15 @@ class TheoriesController < ApplicationController
       return
     end
 
-    @a ||= []
-    @a = Adoption.where("user_id == #{session[:id]}").where("theory_id == #{@theory.id}")
-    if @a == []
-      @adoption = false
-    else
-      @adoption = true
-    end
-
-    if !@adoption
+    @adoption = @theory.adopted_by?(session[:id])
+    if @adoption.size<1
       flash[:notice] = "Opa! você não adotou esta ideia!"
       redirect_to "/users/#{session[:id]}"
       return
     end
-    @a.first.journals.delete_all if @a.first.journals
-    @a.first.destroy
+
+    @adoption.first.journals.delete_all if @adoption.first.journals
+    @adoption.first.destroy
     flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
     redirect_to "/theories"
   end

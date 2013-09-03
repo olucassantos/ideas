@@ -21,10 +21,11 @@ class Theory < ActiveRecord::Base
         has_and_belongs_to_many :categories
         has_many :votes
 
-
-
   def inc_view
     self.view = self.view ? self.view+1 : 0
   end
 
+  def adopted_by?(user_id)
+    adoptions.where(user_id: user_id)
+  end
 end
