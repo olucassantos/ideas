@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813193036) do
+ActiveRecord::Schema.define(:version => 20130903000123) do
 
   create_table "admins", :force => true do |t|
     t.string   "name",                     :null => false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130813193036) do
     t.string   "token"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.boolean  "status"
   end
 
 end
