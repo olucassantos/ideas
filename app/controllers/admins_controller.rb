@@ -4,20 +4,6 @@ class AdminsController < ApplicationController
   respond_to :html
   before_filter :logged? , :admin?
 
-  def admin?
-    if !session[:kind] == 2 || session[:kind] == 1
-      redirect_to "/entrar"
-      flash[:notice] ="Você precisa ser um administrador válido para entrar nesta página."
-    end
-  end
-
-  def logged?
-    if !session[:id]
-      redirect_to "/entrar"
-      flash[:notice] = "Você está logado?"
-    end
-  end
-
   def index
     @admins = Admin.all
     respond_with @admin

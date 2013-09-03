@@ -6,7 +6,7 @@ describe JournalsController do
     @admin = FactoryGirl.create(:admin)
     @user = FactoryGirl.create(:user)
     @journal = FactoryGirl.create(:journal)
-    @adoption = FactoryGirl.create(:adoption)
+    @adoption = @journal.adoption
   end
 
   describe "When not logged" do

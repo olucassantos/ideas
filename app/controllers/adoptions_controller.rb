@@ -6,20 +6,6 @@ class AdoptionsController < ApplicationController
   before_filter :logged?, except: [:index, :show]
   before_filter :admin?, except: [:journal]
 
-  def logged?
-    if !session[:id]
-      redirect_to "/entrar"
-      flash[:notice] = "Você está logado?"
-    end
-  end
-
-  def admin?
-    if session[:kind] != 2
-      redirect_to "/"
-      flash[:notice]="Você não é administrador do site."
-    end
-  end
-
   def index
     if session[:kind] == 2
       @adoptions = Adoption.all

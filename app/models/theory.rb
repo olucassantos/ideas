@@ -3,10 +3,10 @@ class Theory < ActiveRecord::Base
   include ImageSaver
   attr_accessible :brief, :choice, :description, :justification, :outlay, :title, :kind, :user_id, :view, :image_title, :data_stream, :category_ids
         #validates
-        validates  :title, allow_blank: false, length: {maximum: 255}, format:{with: /^[A-Za-z ]+$/}
+        validates  :title, presence: true, length: {maximum: 255}, format:{with: /^[A-Za-z ]+$/}
         validates  :outlay, presence: true
-        validate    :choice, allow_blank: false, allow_nil: false
-        validate    :kind, allow_blank: false, allow_nil: false
+        validate    :choice, presence: true
+        validate    :kind, presence: true
         validates  :brief, presence:true
         validates   :description, presence:true
         validates   :justification, presence:true
@@ -21,10 +21,11 @@ class Theory < ActiveRecord::Base
         has_and_belongs_to_many :categories
         has_many :votes
 
-
-
   def inc_view
     self.view = self.view ? self.view+1 : 0
   end
 
+  def adopted_by?(user_id)
+    adoptions.where(user_id: user_id)
+  end
 end

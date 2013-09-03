@@ -52,7 +52,7 @@ describe AdminsController do
     context 'GET CREATE' do
       it 'should create a user' do
         login_admin(@admin)
-        @nadmin = Admin.new(@admin.attributes.except('id', 'created_at','code','updated_at'))
+        @nadmin = Admin.new(@admin.attributes.except('id', 'created_at','code','updated_at','admin'))
         @nadmin.name = "Poderoso chefão"
         @nadmin.email = "o.lcuas.sasanto@live.com"
         @nadmin.age = "1995-08-05"

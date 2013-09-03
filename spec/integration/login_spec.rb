@@ -8,7 +8,7 @@ describe 'Login' do
       @user = FactoryGirl.create(:user)
     end
 
-    it 'shold login' do
+    it 'should login' do
       visit '/entrar'
       fill_in 'email', with: @user.email
       fill_in 'code', with: @user.code
@@ -44,12 +44,17 @@ describe 'Login' do
       fill_in 'email' , with: 'o.lucasug@jua.com'
       fill_in 'code', with: 'aiasd'
       click_button 'Autenticar'
-      expect(page).to have_text("Não foi possivel validar seu login")
+      expect(page).to have_text("Não foi possivel validar seu login.")
     end
 
     it 'should login when are right and go to index' do
+      pwd = "teste"
+      @user.plain_code = pwd
+      @user.save.should be_true
+
       visit '/entrar'
       fill_in 'email', with: @user.email
+<<<<<<< HEAD
       fill_in 'code', with: '123456'
       click_button 'Autenticar'
       expect(page).to have_text("Logado como: #{@user.name} ")
@@ -71,6 +76,12 @@ describe 'Login' do
       visit '/'
       click_link 'Sair'
       expect(page).to have_link('Login')
+=======
+      fill_in 'code' , with: pwd
+      click_button 'Autenticar'
+
+      expect(page).to have_text("Logado como: #{@user.name}")
+>>>>>>> 36d7cd192d298ede687b7e63ea3d3134ac3e6a8f
     end
   end
 end

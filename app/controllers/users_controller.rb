@@ -4,13 +4,6 @@ class UsersController < ApplicationController
   respond_to :html
   before_filter :logged?, except: [:create, :new, :confirm, :validated]
 
-  def logged?
-    if !session[:id]
-      redirect_to "/entrar"
-      flash[:notice] = "Você está logado?"
-    end
-  end
-
   def index
     if session[:kind] == 2
       @users = User.all
