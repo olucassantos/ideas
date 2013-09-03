@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include ImageSaver
 
   attr_protected :code
-  attr_accessible :about, :age, :email, :name, :phone, :tested, :plain_code, :theory_id, :token, :image_title, :data_stream
+  attr_accessible :about, :age, :email, :name, :phone, :tested, :plain_code, :theory_id, :token, :image_title, :data_stream, :status
   #validates
   validates :name, presence: true, length: { maximum: 200 }, allow_blank: false, format: {with: /^[a-zA-ZçÇà-úÀ-Ú ]+$/}
   validates :email, allow_blank: false, allow_nil: false, uniqueness: true,length: {maximum: 200} , format: {with:/^[a-zA-Z0-9_.-]+@([a-zA-Z0-9_ -]+\.)+[a-zA-Z]{2,4}$/}
