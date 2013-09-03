@@ -12,7 +12,7 @@ describe TheoriesController do
     context 'when a user adopt a theorie' do
       it 'should redirect to adopted' do
         login_user(@user)
-        get :adopt, id: @user
+        get :adopt, id: @theory
         response.should redirect_to "/theories/adopted"
       end
 
@@ -42,8 +42,8 @@ describe TheoriesController do
     context 'when idea already adopted' do
       it 'should redirect to profile' do
         login_user(@user)
-        get :adopt, id:@user
-        get :adopt, id:@user
+        get :adopt, id:@theory
+        get :adopt, id:@theory
         response.should redirect_to user_path(@user)
       end
     end
@@ -76,7 +76,7 @@ describe TheoriesController do
     context 'when has no idea adopted' do
       it 'should redirect to profile' do
         login_user(@user)
-        get :abandon, id:@user
+        get :abandon, id:@theory
         response.should redirect_to user_path(@user)
       end
     end
@@ -85,7 +85,9 @@ describe TheoriesController do
       it 'should redirect to theories index' do
         login_user(@user)
         @adoption = FactoryGirl.create(:adoption)
-        get :abandon, id:@user
+        @adoption.user = @user
+        @adoption.save
+        get :abandon, id: @adoption.theory.id
         response.should redirect_to theories_path
       end
     end
