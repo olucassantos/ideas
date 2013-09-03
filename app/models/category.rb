@@ -4,6 +4,6 @@ class Category < ActiveRecord::Base
 
   default_scope order ("title")
 
-  validates :title, presence: true, allow_blank: false, allow_nil: false, length: {maximum:30}, format: {with: /^[a-zA-Z ]+$/}
+  validates :title, presence: true, length: {maximum:30}, format: {with: /^[a-zA-Z ]+$/}
 
 end
