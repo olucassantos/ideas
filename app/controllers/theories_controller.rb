@@ -4,17 +4,14 @@ class TheoriesController < ApplicationController
   require "user"
   respond_to :html
   before_filter :logged? , :except => [:show]
+  before_filter :tested_adoption?, only: [:adopt]
+  before_filter :tested_abandon?, only: [:abandon]
 
   def user_find
     User.find(session[:id])
   end
 
   def adopt
-    if session[:kind] == 2
-      flash[:notice]="Opa! Uma administrador infelizmente não pode adotar uma ideia!"
-      redirect_to "/"
-      return
-    end
 
     if session[:tested]
       @theory = Theory.find( params[:id] ) rescue nil
@@ -39,19 +36,10 @@ class TheoriesController < ApplicationController
 
         Adoption.create(theory_id: @theory.id,user_id: session[:id])
         redirect_to "/theories/adopted"
-    else
-      flash[:notice] = "Você esta cadastrado mas ainda não confirmou seu perfil."
-      redirect_to "/users/#{session[:id]}"
     end
   end
 
   def abandon
-    if session[:kind] == 2
-      flash[:notice]="Opa! Uma administrador não possui adoções para abandonar!"
-      redirect_to "/"
-      return
-    end
-
     if session[:tested]
       @theory = Theory.find( params[:id] ) rescue nil
       if !@theory
@@ -76,9 +64,6 @@ class TheoriesController < ApplicationController
         @a.first.destroy
         flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
         redirect_to "/theories"
-    else
-      flash[:notice] = "Você esta cadastrado mas ainda não confirmou seu perfil."
-      redirect_to "/users/#{session[:id]}"
     end
   end
 
@@ -172,5 +157,31 @@ class TheoriesController < ApplicationController
       flash[:notice] = "Você não pode apagar uma idea que não te pertence."
       redirect_to "/theories"
     end
+  end
+
+  private
+  def tested?
+    if !session[:tested]
+      flash[:notice] = "Você esta cadastrado mas ainda não confirmou seu perfil."
+      redirect_to session[:kind]==2 ? "/" : "/users/#{session[:id]}"
+    end
+  end
+
+  def tested_adoption?
+    if session[:kind]==2
+      flash[:notice] = "Opa! Uma administrador infelizmente não pode adotar uma ideia!"
+      redirect_to "/"
+      return
+    end
+    tested?
+  end
+
+  def tested_abandon?
+    if session[:kind]==2
+      flash[:notice] = "Opa! Uma administrador não possui adoções para abandonar!"
+      redirect_to "/"
+      return
+    end
+    tested?
   end
 end
