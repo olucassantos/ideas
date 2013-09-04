@@ -11,45 +11,65 @@
           %center
             = msg
   = render 'shared/image_field', f: f
+  %br
+  %br
   .field
     -if params[:user]
       = hidden_field_tag :user_id, params[:user]
   .field
-    Titulo
+    .Text Titulo:
     %br/
     = f.text_field :title
+    %br
+    %br
   .field
-    Descrição:
+    .Text Descrição:
     %br/
-    = f.text_area :description
+    = f.text_area :description, class: "redactor", rows: 40, cols: 100
   .field
-    Justificativa:
+    .Text Justificativa:
     %br/
-    = f.text_area :justification
+    = f.text_area :justification, class: "redactor", rows: 40, cols: 100
   .field
-    Resumo:
+    .Text Resumo:
     %br/
-    = f.text_area :brief
+    = f.text_area :brief, maxlength: 255
   .field
-    Gastos:
+    .Text Gastos:
     %br/
+    R$
     = f.text_field :outlay
-  .field
-    = f.radio_button :choice, true, checked: true
-    = f.label "Alguem desenvolva"
-    = f.radio_button :choice, false
-    = f.label "Alguem Financie"
-  .field
-    = f.radio_button :kind, true, checked: true
-    = f.label "Publica"
-    = f.radio_button :kind, false
-    = f.label "Privada"
-  .field
-    %p
-    Categorias
-    %br/
-    - Category.find(:all).each do |category|
-      = check_box_tag "theory[category_ids][]", category.id, @theory.categories.include?(category)
-      = category.title
+    %br
+    %br
+    %hr.horizontalrule
+  .ultrabox
+    .field
+      .desc Em que as pessoas podem te ajudar?
+      %table
+        %tr
+          %th= f.radio_button :choice, true, checked: true
+          %th.choi= f.label "A desenvolver minha ideia."
+        %tr
+          %th= f.radio_button :choice, false
+          %th.choi= f.label "Me financiando"
+    %hr.horizontalrule
+    .field
+      .desc Todos podem adotar sua ideia?
+      %table
+        %tr
+          %th= f.radio_button :kind, true, checked: true
+          %th.choi= f.label "Sim"
+        %tr
+          %th= f.radio_button :kind, false
+          %th.choi= f.label "Não"
+    %hr.horizontalrule
+    .field
+      .desc Categorias:
+      %br/
+      %table
+      - Category.find(:all).each do |category|
+        %tr
+          %th= check_box_tag "theory[category_ids][]", category.id, @theory.categories.include?(category)
+          %th.choi= category.title
   .actions
     = f.submit

@@ -7,7 +7,7 @@
     background-size: 100%;
     background-attachment: fixed;
     margin: 0 auto;
-    font-family: Monaco ;
+    font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif !important;
   }
 
   img.logo{
@@ -342,7 +342,6 @@ a:hover  {text-decoration: none;}
   }
   h2{
     color: #00BFFF;
-    font-family: "Segoe UI";
     font-size: 25px;
   }
 
@@ -394,8 +393,15 @@ ul.thumb li img.hover {margin-top:15px;background:url(/thumb_bg.png) no-repeat c
   .linkButton a, .linkButton a:active, .linkButton a:hover, .linkButton a:visited { color: #FFFFFF; text-shadow: 0 1px 0 #666; }
 
   .field textarea{
-    width: 660px;
-    height: 200px;
+    height: 50px;
+    width:  1016px;
+    resize: none;
+    border-color: #DCDCDC;
+  }
+   .field input[type=text]{
+    height: 25px;
+    text-align: center;
+    font-size: 20px;
   }
   .ContentAdoptions h2{
     color: black;
@@ -519,3 +525,15 @@ ul.thumb li img.hover {margin-top:15px;background:url(/thumb_bg.png) no-repeat c
      color:#FFFF00;
      text-decoration: none;
   }
+
+
+.desc{
+    font:small-caps;
+    font-size: 25px;
+  }
+}
+
+.choi{
+  font-weight: bold;
+  font-size: 15px;
+}
