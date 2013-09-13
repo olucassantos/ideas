@@ -1,45 +1,31 @@
 !!!
 %html
   %head
-    %title !dea
+    %title Idea - Onde sua idea cria asas.
     = stylesheet_link_tag "empty", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     %header
-      .ImageHeader
-        %img{src: "/images/ideas.png"}
-      %br
-
-        .menu{:align => "center"}
-          %nav
-            - if session[:kind] == 2
-              = render "layouts/admin"
-            - else
-              -if session[:kind] == 1
-                = render "layouts/user"
-              -else
-                = render "layouts/visitor"
-
-        %br
-          %div{:align => "right"}
-            - if session[:id]
-              Logado como: #{session[:name]}
-              |
-              =link_to "Sair", "/sair", class: "linkButton"
-            - else
-              =link_to "Login", "/entrar", class: "linkButton"
-              |
-              =link_to "Cadastre-se", "/users/new", class: "linkButton"
-    %section#main
-      %center
-        = yield
-    %footer.site-footer
-      %center
-        .IdeaTitle
-          %p !deas
-        %img.footer{src: "/images/footer.png"}
-        .rightfooter
-          %p O !dea é um site, onde é possivel encontrar ou ajudar pessoas com ideias.
-        .leftfooter
-          %p !dea onde sua ideia cria asas!
+      %nav
+        - if session[:kind] == 2
+          = render "layouts/admin"
+        - else
+          -if session[:kind] == 1
+            = render "layouts/user"
+          -else
+            = render "layouts/visitor"
+      .login
+        - if session[:id]
+          #{session[:name]}
+          |
+          =link_to "Sair", "/sair", class: "linkButton"
+        - else
+          =link_to "Login", "/entrar", class: "linkButton"
+          |
+          =link_to "Cadastre-se", "/users/new", class: "linkButton"
+    .aboutHeader
+      .video
+        %iframe{:frameborder => "0",:src => "//player.vimeo.com/video/33091687", :webkitallowfullscreen => "", :width => "500"}
+    .section#main
+      = yield
