@@ -7,25 +7,18 @@
     = csrf_meta_tags
   %body
     %header
-      %nav
-        - if session[:kind] == 2
-          = render "layouts/admin"
-        - else
-          -if session[:kind] == 1
-            = render "layouts/user"
-          -else
-            = render "layouts/visitor"
-      .login
-        - if session[:id]
-          #{session[:name]}
-          |
-          =link_to "Sair", "/sair", class: "linkButton"
-        - else
-          =link_to "Login", "/entrar", class: "linkButton"
-          |
-          =link_to "Cadastre-se", "/users/new", class: "linkButton"
-    .aboutHeader
-      .video
-        %iframe{:frameborder => "0",:src => "//player.vimeo.com/video/33091687", :webkitallowfullscreen => "", :width => "500"}
+      .logo
+        %img#logo{src: "/assets/ideas.png"}
+      %container#header
+        %nav
+          - if session[:kind] == 2
+            = render "layouts/admin"
+          - else
+            -if session[:kind] == 1
+              = render "layouts/user"
+            -else
+              = render "layouts/visitor"
+      .search
+        = text_field_tag :search
     .section#main
       = yield
