@@ -6,7 +6,7 @@ $shadowColor: #33332d
 $neultralColor: #fff8e3
 
 body
-  font-family: "trebuchet, helvetica, sans-serif"
+  font-family: "Trebuchet MS" ,"Verdana" ,"Arial" ,"Helvetica" ,"sans-serif"
 
 header
   background-color: $highColor
@@ -15,39 +15,62 @@ header
   top: 0px
   right: 0px
   width: 100%
-  border-bottom-left-radius: 10px
-  border-bottom-right-radius: 10px
-  box-shadow: 0px 1px 4px $lightColor
+  box-shadow: 0px 1px 4px $shadowColor
   height: 65px
   z-index: 999
-  & img#logo
-    height: 65px
-    width: 180px
-    float: left
-  & container
-    max-width: 600px
+  & container#header
+    max-width: 980px
     height: 60px
-    margin-left: 20px
-    float: left
-    position: relative
-  & a
-    border-radius: 4px
-    color: $ultralColor
-    padding-top: 20px
-    font-weight: bold
-    text-align: center
-    font-size: 16px
-    text-decoration: none
-    text-shadow: 1px 1px 1px $shadowColor
-    width: 80px
-    height: 45px
-    display: inline-block
-    line-height: 20px
-    &:hover
-      background-color: $shadowColor
-    &:active
-      background-color: $ultralColor
+    display: block
+    margin: 0 auto
+    & .logo
+      width: 185px
+      height: 65px
+      float: left
+      margin-top: 5px
+      & img
+        width: 180px
+    nav
+      max-width: 690px 
+      float: left
+      & a.navlinks
+        border-radius: 4px
+        color: $ultralColor
+        padding-top: 20px
+        font-weight: bold
+        text-align: center
+        font-size: 16px
+        text-decoration: none
+        text-shadow: 1px 1px 1px $shadowColor
+        width: 80px
+        height: 45px
+        display: inline-block
+        line-height: 20px
+        &:hover
+          background-color: $shadowColor
+          transition: all 0.4s
+        &:active
+          background-color: $ultralColor
+      & a#logout
+        border-radius: 4px
+        color: $ultralColor
+        padding-top: 20px
+        font-weight: bold
+        text-align: center
+        font-size: 16px
+        text-decoration: none
+        text-shadow: 1px 1px 1px $shadowColor
+        width: 80px
+        height: 45px
+        display: inline-block
+        line-height: 20px
+        &:hover
+          background-color: #DF7D60
+        &:active
+          background-color: $ultralColor
   & .search
+    width: 200px
+    float: left
     & input
       width: 200px
       font-size: 33px
@@ -57,32 +80,12 @@ header
       border-radius: 4px
       box-shadow: 2px 2px 4px $shadowColor
       margin-top: 10px
-      transition: width 2s
+      transition: width 1s
       color: $shadowColor
       padding-left: 10px
       margin-left: 10px
       &:focus
-        transition: all 2s
+        transition: width 2s
         border: 1px solid $shadowColor
+        background-color: lighten(($ultralColor),10)
         width: 400px
-
-.aboutHeader
-  background-color: $ultralColor
-  width: 120%
-  height: 600px
-  margin-left: -8px
-  text-align: center
-  margin-top: 2px
-  & .video
-    height: 328px
-    width: 572px
-    position: relative
-    left: 60px
-    top: 150px
-    text-align: center
-    background-color: $shadowColor
-    border-radius: 3px
-    & iframe
-      margin-top: 8px
-      width: 555px
-      height: 313px

@@ -7,9 +7,9 @@
     = csrf_meta_tags
   %body
     %header
-      .logo
-        %img#logo{src: "/assets/ideas.png"}
       %container#header
+        .logo
+          = link_to image_tag( '/assets/ideas.png'), '/', id: 'logo'
         %nav
           - if session[:kind] == 2
             = render "layouts/admin"
@@ -18,7 +18,8 @@
               = render "layouts/user"
             -else
               = render "layouts/visitor"
-      .search
-        = text_field_tag :search
+        -if session[:kind] == 1
+          .search
+            = text_field_tag :search
     .section#main
       = yield

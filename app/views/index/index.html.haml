@@ -2,17 +2,20 @@
   .aboutHeader
     .video
       %iframe{:frameborder => "0",:src => "//player.vimeo.com/video/33091687", :webkitallowfullscreen => "", :width => "500"}
+    .text
+      %img#about{src: '/assets/ideas.png'}
+      %h2 O mundo precisa de ideias novas, e nós facilitamos este trabalho:
+      %h3 O que fazemos?
+      %ul
+        %li Nós somos uma comunidade para divulgar ideas, com o intuito de incubar e expandir pequenas ideias.
+        %li Também divulgamos ideas para melhorar o mundo com coisas simples.
+      %ul
+      %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
+    .attentionStart
+      =link_to "Comece Aqui", new_user_path, class: 'link'
   %h1
     .notice{align: "center"}
       %p#notice= notice
-  / .Slider
-  /   #slideshowHolder
-  /     %img{alt: "Bem vindo ao site, cadastre-se !", :src => "/images/rasgadocadastre.png"}
-  /       %a{href: "/users/new"}
-  /     %img{alt: "Compartilhe uma ideia, um dia pode ser um grande projeto !", :src => "/images/rasgadocompartilhe.png"}
-  /       %a{href: "/theories/new"}
-  /     %img{alt: "Divulgue o site !", :src => "/images/rasgadodivulgue.png"}
-  /       %a{href: "/"}
   %br
   .TheoriesIndex
     .lastTheories
@@ -37,26 +40,25 @@
             =link_to "#{last.user.name}", "/users/#{last.user.id}", class: "nameLinkIndex" if last
         %br
 
-    .mostViews
-      %center
-        %h2 Ideias Mais Vistas
-      -@theories.each do |theory|
-        .boxes
-          .imageIdea
-            %img.logo{src: "#{theory.image.to_s}"}
-          .dataIdea
-            = "Não encontrei nenhuma !dea." if !theory
-            = link_to "#{theory.title}" , "theories/#{theory.id}", class: "titleLinkIndex" if theory
-            %br
-            O que é?
-            %br
-            = theory.brief if theory
-            %br
-            Views:
-            =theory.view if theory
-            %br
-            Por:
-            =link_to "#{theory.user.name}", "/users/#{theory.user.id}", class: "nameLinkIndex" if theory
-        %br
-.clear
+    / .mostViews
+    /   %center
+    /     %h2 Ideias Mais Vistas
+    /   -@theories.each do |theory|
+    /     .boxes
+    /       .imageIdea
+    /         %img.logo{src: "#{theory.image.to_s}"}
+    /       .dataIdea
+    /         = "Não encontrei nenhuma !dea." if !theory
+    /         = link_to "#{theory.title}" , "theories/#{theory.id}", class: "titleLinkIndex" if theory
+    /         %br
+    /         O que é?
+    /         %br
+    /         = theory.brief if theory
+    /         %br
+    /         Views:
+    /         =theory.view if theory
+    /         %br
+    /         Por:
+    /         =link_to "#{theory.user.name}", "/users/#{theory.user.id}", class: "nameLinkIndex" if theory
+    /     %br
 
