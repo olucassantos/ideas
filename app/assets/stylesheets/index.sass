@@ -1,3 +1,4 @@
+@import compass
 //Color Schema
 $highColor: #046380
 $lightColor: #e6e2af
@@ -7,27 +8,29 @@ $neultralColor: #fff8e3
 
 body
   font-family: "Trebuchet MS" ,"Verdana" ,"Arial" ,"Helvetica" ,"sans-serif"
+  overflow-x:
+ hidden
 
 header
+  box-shadow: 0px 1px 4px $shadowColor
   background-color: $highColor
   background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.3))
-  position: fixed
-  top: 0px
-  right: 0px
-  width: 100%
-  box-shadow: 0px 1px 4px $shadowColor
   height: 65px
+  position: fixed
+  right: 0px
+  top: 0px
+  width: 100%
   z-index: 999
   & container#header
-    max-width: 980px
-    height: 60px
     display: block
+    height: 60px
+    max-width: 980px
     margin: 0 auto
     & .logo
-      width: 185px
-      height: 65px
       float: left
+      height: 65px
       margin-top: 5px
+      width: 185px
       & img
         width: 180px
     nav
@@ -36,16 +39,16 @@ header
       & a.navlinks
         border-radius: 4px
         color: $ultralColor
-        padding-top: 20px
+        display: inline-block
         font-weight: bold
-        text-align: center
         font-size: 16px
+        height: 45px
+        line-height: 20px
+        padding-top: 20px
+        text-align: center
         text-decoration: none
         text-shadow: 1px 1px 1px $shadowColor
         width: 80px
-        height: 45px
-        display: inline-block
-        line-height: 20px
         &:hover
           background-color: $shadowColor
           transition: all 0.4s
@@ -54,38 +57,37 @@ header
       & a#logout
         border-radius: 4px
         color: $ultralColor
-        padding-top: 20px
+        display: inline-block
         font-weight: bold
-        text-align: center
         font-size: 16px
+        height: 45px
+        line-height: 20px
+        padding-top: 20px
         text-decoration: none
         text-shadow: 1px 1px 1px $shadowColor
+        text-align: center
         width: 80px
-        height: 45px
-        display: inline-block
-        line-height: 20px
         &:hover
           background-color: #DF7D60
         &:active
           background-color: $ultralColor
   & .search
-    width: 200px
     float: left
+    width: 200px
     & input
-      width: 200px
-      font-size: 33px
-      font-family: "trebuchet"
       background-color: $ultralColor
       border: none
       border-radius: 4px
       box-shadow: 2px 2px 4px $shadowColor
-      margin-top: 10px
-      transition: width 1s
       color: $shadowColor
-      padding-left: 10px
+      font-size: 33px
       margin-left: 10px
+      margin-top: 10px
+      padding-left: 10px
+      transition: width 1s
+      width: 200px
       &:focus
-        transition: width 2s
         border: 1px solid $shadowColor
         background-color: lighten(($ultralColor),10)
+        transition: width 2s
         width: 400px

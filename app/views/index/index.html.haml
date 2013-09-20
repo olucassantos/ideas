@@ -14,32 +14,34 @@
         %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
       .attentionStart
         =link_to "Comece Aqui", new_user_path, class: 'link'
-  %h1
-    .notice{align: "center"}
-      %p#notice= notice
-  %br
-  .TheoriesIndex
-    .lastTheories
-      %center
-        %h2 Ultimas Ideias
-      -@lasts.each do |last|
-        .boxes
-          .imageIdea
-            %img.logo{src: "#{last.image.to_s}"}
-          .dataIdea
-            = "Não encontrei nenhuma !dea." if !last
-            = link_to "#{last.title}" , "theories/#{last.id}", class: "titleLinkIndex" if last
+
+      .theoriesIndex
+        .lastTheories
+          %center
+            %h2 Ultimas Ideias
+          -@lasts.each do |last|
+            .boxes
+              .imageIdea
+                %img.logo{src: "#{last.image.to_s}"}
+              .dataIdea
+                = "Não encontrei nenhuma !dea." if !last
+                = link_to "#{last.title}" , "theories/#{last.id}", class: "titleLinkIndex" if last
+                %br
+                = "O que é?" if last
+                %br
+                = last.brief if last
+                %br
+                = "Views:" if last
+                =last.view if last
+                %br
+                = "Por:" if last
+                =link_to "#{last.user.name}", "/users/#{last.user.id}", class: "nameLinkIndex" if last
             %br
-            = "O que é?" if last
-            %br
-            = last.brief if last
-            %br
-            = "Views:" if last
-            =last.view if last
-            %br
-            = "Por:" if last
-            =link_to "#{last.user.name}", "/users/#{last.user.id}", class: "nameLinkIndex" if last
-        %br
+  
+    / %h1
+    /   .notice{align: "center"}
+    /     %p#notice= notice
+
 
     / .mostViews
     /   %center
