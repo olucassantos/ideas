@@ -14,19 +14,22 @@
         %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
       .attentionStart
         =link_to "Comece Aqui", new_user_path, class: 'link'
-      .boxes  
+      .boxes
+        %h1#tops As mais vistas... 
         -@lasts.each do |theory|
           .box
-            %h1= link_to "#{theory.title}" , "theories/#{theory.id}" if theory
+            %h1= link_to truncate(theory.title, length: 15, separator:' ').humanize , "theories/#{theory.id}" if theory
             .imageTheory
               %img.logo{src: "#{theory.image.to_s}"}
             .dataTheory
-              = "O que é?" if theory
-              = theory.brief if theory
-              = "Views:" if theory
-              =theory.view if theory
-              = "Por:" if theory
-              =link_to "#{theory.user.name}", "/users/#{theory.user.id}" if theory
+              %p#author= link_to "Por: #{theory.user.name}", "/users/#{theory.user.id}" if theory
+              %h2= "O que é?" if theory
+              %p#brief= theory.brief if theory
+              %p#views
+                %span
+                  %img{src: "/assets/views.png"}
+                  = theory.view if theory
+              
 
 
     / %h1

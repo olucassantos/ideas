@@ -71,15 +71,57 @@ body
           line-height: 70px
           margin: 0 auto
       .boxes
-        background-color: $shadowColor
-        margin-top: 127px
+        position: relative
+        top: 127px
+        margin: 0 auto
         .box
-          background-color: $lightColor
-          border-radius: 4px
+          background-color: $ultralColor
+          border-radius: 10px
           float: left
-          height: 500px
+          height: 535px
           margin-right: 10px
-          width: 256px
+          width: 222px
+          & h1
+            height: 28px
+            margin-top: 10px
+            margin-bottom: 10px
+            line-height: 24px
+            & a
+              color: $shadowColor
+              font-size: 24px
+              font-weight: bold
+              text-shadow: 1px 1px 1px $shadowColor
+              text-decoration: none
+          & h2
+            color: $shadowColor
+            font-size: 18px
+            margin-top: 5px
+            margin-bottom: 5px
+          p#brief
+            font-size: 15px
+            padding: 0 13px 0 13px
+            text-align: justify
+            margin-top: 5px
+            margin-bottom: 5px
+            height: 220px
+          p#author
+            font-size: 12px
+            font-style: italic
+            margin: 0 auto
+            text-align: left
+            padding-left: 6px
+            & a
+              color: $shadowColor
+              text-decoration: none
+          p#views
+            font-size: 25px
+            max-width: 255px
+            margin: 0 auto
+            width: 222px
+            background-color: Gold
+            border-bottom-right-radius: 10px
+            border-bottom-left-radius: 10px
+
           & .imageTheory
             background: $shadowColor
             border-radius: 4px
@@ -87,9 +129,13 @@ body
             margin: 0 auto
             margin-top: 10px
             padding-top: 5px
-            width: 244px
-            height: 176px
+            width: 209px
+            height: 173px
             & img            
-              height: 170px
-              width: 230px
+              height: 168px
+              width: 199px
+        h1#tops
+          color: $shadowColor
+          font-size: 35px
+
 
