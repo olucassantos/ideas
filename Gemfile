@@ -20,12 +20,10 @@ group :assets do
   gem 'uglifier', '>= 2.2.1'
   gem 'compass-rails'
 end
-group :test do
- gem 'rspec-rails', '2.13.1'
+group :test, :development do
+  gem  'rspec-rails', '2.13.1'
   gem 'factory_girl_rails'
   gem 'capybara', '2.1.0'
   gem 'selenium-webdriver', '2.35.1'
-end
-group :development do
   gem 'guard-rspec'
 end

@@ -25,9 +25,9 @@ describe Theory do
     theory.should_not be_valid
   end
 
-  it "should has maximum 255 characters" do
-    theory = FactoryGirl.build(:theory, title:"a"*256)
-    theory.should_not be_valid
+  it "should has maximum 100 characters" do
+    theory = FactoryGirl.build(:theory, title:"a"*100)
+    theory.should be_valid
   end
 
   #test justification
