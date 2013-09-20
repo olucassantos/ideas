@@ -1,18 +1,19 @@
 %html
   .aboutHeader
-    .video
-      %iframe{:frameborder => "0",:src => "//player.vimeo.com/video/33091687", :webkitallowfullscreen => "", :width => "500"}
-    .text
-      %img#about{src: '/assets/ideas.png'}
-      %h2 O mundo precisa de ideias novas, e nós facilitamos este trabalho:
-      %h3 O que fazemos?
-      %ul
-        %li Nós somos uma comunidade para divulgar ideas, com o intuito de incubar e expandir pequenas ideias.
-        %li Também divulgamos ideas para melhorar o mundo com coisas simples.
-      %ul
-      %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
-    .attentionStart
-      =link_to "Comece Aqui", new_user_path, class: 'link'
+    .content
+      .video
+        %iframe{frameborder: "0",src: "//player.vimeo.com/video/33091687", webkitallowfullscreen: "", width: "500"}
+      .text
+        %img#about{src: '/assets/ideas.png'}
+        %h2 O mundo precisa de ideias novas, e nós facilitamos este trabalho:
+        %h3 O que fazemos?
+        %ul
+          %li Nós somos uma comunidade para divulgar ideas, com o intuito de incubar e expandir pequenas ideias.
+          %li Também divulgamos ideas para melhorar o mundo com coisas simples.
+        %ul
+        %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
+      .attentionStart
+        =link_to "Comece Aqui", new_user_path, class: 'link'
   %h1
     .notice{align: "center"}
       %p#notice= notice

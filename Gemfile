@@ -18,6 +18,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 2.2.1'
+  gem 'compass-rails'
 end
 group :test do
  gem 'rspec-rails', '2.13.1'
