@@ -2,8 +2,6 @@ Ideia::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
 
-  resources :votes
-
   resources :journals
 
   resources :adoptions do
@@ -33,6 +31,7 @@ Ideia::Application.routes.draw do
   post "login/logout"
   get 'users/validated'
   get 'theories/adopted'
+  post '/vote/:theory_id/:vote' => 'votes#vote'
 
   match "entrar" => "login#login"
   match "sair" => "login#logout"
