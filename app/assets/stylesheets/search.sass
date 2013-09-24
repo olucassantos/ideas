@@ -1,0 +1,40 @@
+@import compass
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neultralColor: #fff8e3
+
+.searchResult
+  margin: 0 auto
+  width: 980px
+  & .strip
+    background-color: $lightColor
+    margin: 5px 0 5px 0
+    border-radius: 10px
+    +clearfix
+    & .stripImg 
+      float: left
+      width: 110px
+      height: 110px
+      background-color: $shadowColor
+      text-align: center
+      & img
+        width: 90px
+        height: 90px
+        padding-top: 10px
+    & .stripContent
+      float: left
+      width: 835px
+      padding-left: 15px
+      padding-top: 10px
+      & .contentTitle
+        width: 170px
+        color: $shadowColor
+        font-size: 24px
+      & .contentCategory
+      & .contentBrief
+        color: $shadowColor
+
+

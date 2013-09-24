@@ -1,0 +1,17 @@
+.searchResult
+  %h1= "Sua busca por \"#{truncate(@search, length: 60, separator:' ').humanize}\" retornou:"
+  .stripIndex
+    -@theories.each do |theory|
+      .strip
+        .stripImg
+          %img{src: "#{theory.image.to_s}"}
+        .stripContent
+          .contentTitle
+            =truncate(theory.title, length: 15, separator:' ').titleize
+          .contentBrief
+            =truncate(theory.brief, length: 120, separator:' ').humanize
+          .contentCategory
+            =theory.categories.first.title if theory.categories.first
+            ="Outros" if !theory.categories.first
+
+    

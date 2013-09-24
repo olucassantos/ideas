@@ -20,7 +20,7 @@
               = render "layouts/visitor"
         -if session[:kind] == 1
           .search
-            = text_field_tag :search
+            =render 'layouts/search'
     .section#main
       = yield
       = yield :javascript

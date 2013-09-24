@@ -28,4 +28,10 @@ class Theory < ActiveRecord::Base
   def adopted_by?(user_id)
     adoptions.where(user_id: user_id)
   end
+
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, conditions: ['title LIKE ?', search_condition])
+  end
+
 end

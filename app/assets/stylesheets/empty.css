@@ -2,4 +2,5 @@
 *= require redactor-rails
 *= require index
 *= require home
+*= require search
 */
