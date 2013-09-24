@@ -32,6 +32,7 @@ Ideia::Application.routes.draw do
   get 'users/validated'
   get 'theories/adopted'
   post '/vote/:theory_id/:vote' => 'votes#vote'
+  post '/theories/search' => 'theories#search'
 
   match "entrar" => "login#login"
   match "sair" => "login#logout"
@@ -45,6 +46,8 @@ Ideia::Application.routes.draw do
    end
 
   resources :users
+
+
   match '/users/:token/confirm' => 'users#confirm'
   match '/users/:id/send' => 'users#sendMail'
   match '/adoptions/new/:theory' => 'adoptions#new'
