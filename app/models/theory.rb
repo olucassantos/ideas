@@ -31,7 +31,7 @@ class Theory < ActiveRecord::Base
 
   def self.search(search)
     search_condition = "%" + search + "%"
-    find(:all, conditions: ['title LIKE ?', search_condition])
+    find(:all, conditions: ['title LIKE ? OR description LIKE ? OR justification LIKE ? OR brief LIKE ?', search_condition, search_condition, search_condition, search_condition])
   end
 
 end
