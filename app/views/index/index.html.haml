@@ -1,44 +1,58 @@
 %html
   .aboutHeader
-    .video
-      %iframe{:frameborder => "0",:src => "//player.vimeo.com/video/33091687", :webkitallowfullscreen => "", :width => "500"}
-    .text
-      %img#about{src: '/assets/ideas.png'}
-      %h2 O mundo precisa de ideias novas, e nós facilitamos este trabalho:
-      %h3 O que fazemos?
-      %ul
-        %li Nós somos uma comunidade para divulgar ideas, com o intuito de incubar e expandir pequenas ideias.
-        %li Também divulgamos ideas para melhorar o mundo com coisas simples.
-      %ul
-      %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
-    .attentionStart
-      =link_to "Comece Aqui", new_user_path, class: 'link'
-  %h1
-    .notice{align: "center"}
-      %p#notice= notice
-  %br
-  .TheoriesIndex
-    .lastTheories
-      %center
-        %h2 Ultimas Ideias
-      -@lasts.each do |last|
-        .boxes
-          .imageIdea
-            %img.logo{src: "#{last.image.to_s}"}
-          .dataIdea
-            = "Não encontrei nenhuma !dea." if !last
-            = link_to "#{last.title}" , "theories/#{last.id}", class: "titleLinkIndex" if last
-            %br
-            = "O que é?" if last
-            %br
-            = last.brief if last
-            %br
-            = "Views:" if last
-            =last.view if last
-            %br
-            = "Por:" if last
-            =link_to "#{last.user.name}", "/users/#{last.user.id}", class: "nameLinkIndex" if last
-        %br
+    .content
+      .video
+        %iframe{frameborder: "0",src: "//player.vimeo.com/video/33091687", webkitallowfullscreen: "", width: "500"}
+      .text
+        %img#about{src: '/assets/ideas.png'}
+        %h2 O mundo precisa de ideias novas, e nós facilitamos este trabalho:
+        %h3 O que fazemos?
+        %ul
+          %li Nós somos uma comunidade para divulgar ideas, com o intuito de incubar e expandir pequenas ideias.
+          %li Também divulgamos ideas para melhorar o mundo com coisas simples.
+        %ul
+        %h2 Isso tudo depende de você. Cadastre-se e venha pensar!
+      .attentionStart
+        -if session[:id]
+          =link_to "Compartilhe ideias!", new_theory_path, class: 'link'
+        -else
+          =link_to "Comece Aqui", new_user_path, class: 'link'
+      .boxes
+        %h1#tops As mais vistas... 
+        -@theories.each do |theory|
+          .box
+            %h1= link_to truncate(theory.title, length: 15, separator:' ').humanize , "theories/#{theory.id}" if theory
+            .imageTheory
+              %img.logo{src: "#{theory.image.to_s}"}
+            .dataTheory
+              %p#author= link_to "Por: #{theory.user.name}", "/users/#{theory.user.id}" if theory
+              %h2= "O que é?" if theory
+              %p#brief= theory.brief if theory
+              %p#views
+                %span
+                  %img{src: "/assets/views.png"}
+                  = theory.view if theory
+      .boxes
+        %h1#tops As ultimas ideias... 
+        -@lasts.each do |theory|
+          .box
+            %h1= link_to truncate(theory.title, length: 15, separator:' ').humanize , "theories/#{theory.id}" if theory
+            .imageTheory
+              %img.logo{src: "#{theory.image.to_s}"}
+            .dataTheory
+              %p#author= link_to "Por: #{theory.user.name}", "/users/#{theory.user.id}" if theory
+              %h2= "O que é?" if theory
+              %p#brief= theory.brief if theory
+              %p#views
+                %span
+                  %img{src: "/assets/views.png"}
+                  = theory.view if theory              
+
+
+    / %h1
+    /   .notice{align: "center"}
+    /     %p#notice= notice
+
 
     / .mostViews
     /   %center

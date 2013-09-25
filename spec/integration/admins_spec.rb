@@ -17,27 +17,27 @@ describe 'AdminsController' do
 
     it 'should enter page index of admin' do
       visit '/'
-      click_link 'Administradores'
+      click_link 'Admins'
       expect(page).to have_text('Lista de Administradores')
     end
 
     it 'should view a admin profile' do
       visit '/'
-      click_link 'Administradores'
+      click_link 'Admins'
       click_link "#{@admin.name}"
       expect(page).to have_text("Name: #{@admin.name}")
     end
 
     it 'should enter in edit a new admin' do
         visit '/'
-        click_link 'Administradores'
+        click_link 'Admins'
         click_link 'Editar'
         expect(page).to have_text("Editar Administrador")
     end
 
     it 'should create a admin' do
         visit '/'
-        click_link 'Administradores'
+        click_link 'Admins'
         click_link 'Cadastrar Novo Administrador'
         expect(page).to have_text("Novo Administrador")
     end
