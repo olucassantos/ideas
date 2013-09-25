@@ -145,6 +145,11 @@ class TheoriesController < ApplicationController
     end
   end
 
+  def search
+    @search = params[:search]
+    @theories = Theory.search params[:search]
+  end
+
   private
   def tested?
     if !session[:tested]

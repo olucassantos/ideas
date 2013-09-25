@@ -4,3 +4,4 @@
 //= require jqFancyTransitions
 //= require zoomer
 //= require redactor-rails
+

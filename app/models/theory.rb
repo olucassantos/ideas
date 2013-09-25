@@ -3,7 +3,7 @@ class Theory < ActiveRecord::Base
   include ImageSaver
   attr_accessible :brief, :choice, :description, :justification, :outlay, :title, :kind, :user_id, :view, :image_title, :data_stream, :category_ids
         #validates
-        validates  :title, presence: true, length: {maximum: 60}, format:{with: /^[A-Za-z ]+$/}
+        validates  :title, presence: true, length: {maximum: 100}, format:{with: /^[A-Za-z ]+$/}
         validates  :outlay, presence: true
         validate    :choice, presence: true
         validate    :kind, presence: true
@@ -28,4 +28,10 @@ class Theory < ActiveRecord::Base
   def adopted_by?(user_id)
     adoptions.where(user_id: user_id)
   end
+
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, conditions: ['title LIKE ?', search_condition])
+  end
+
 end
