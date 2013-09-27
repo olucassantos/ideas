@@ -32,6 +32,7 @@ Ideia::Application.routes.draw do
   get 'users/validated'
   get 'theories/adopted'
   post '/vote/:theory_id/:vote' => 'votes#vote'
+  post '/favorite/:theory_id/' => 'favorites#check'
   post '/theories/search' => 'theories#search'
 
   match "entrar" => "login#login"

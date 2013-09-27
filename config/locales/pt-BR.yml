@@ -1,4 +1,8 @@
 pt-BR:
+  form:
+    file_field: "Escolha um arquivos"
+    buttons:
+      file_field: "Escolha um arquivo"
   date:
     abbr_day_names:
     - Dom
