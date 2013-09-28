@@ -10,6 +10,9 @@
         .down
           =link_to '-', "#", class: 'down'
           = @theory.votes.where(point: false).count
+      .favorite
+        =link_to 'Favoritar', "#", class: 'favorite'
+        = @theory.favorites.count
       .headerTitle
         = @theory.title
       .headerName
@@ -66,3 +69,4 @@
 = content_for :javascript do
   :javascript
     new Votes()
+    new Favorite()
