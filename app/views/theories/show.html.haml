@@ -67,6 +67,8 @@
     = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
   .fb-comments{"data-href" => "http://clubedeautores.com/theories/#{@theory.id}", "data-width" => "900", "num_posts" => "5"}
   .g-plus{"data-action" => "share", "data-annotation" => "vertical-bubble", "data-height" => "60"}
+  %a{:href => "http://www.reddit.com/submit", :onclick => "window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"}
+    %img{:alt => "submit to reddit", :border => "0", :src => "http://www.reddit.com/static/spreddit7.gif"}
 
 = content_for :javascript do
   :javascript
