@@ -1,5 +1,11 @@
 /*
-
-= require css
-
+*= require redactor-rails
+*= require index
+*= require model
+*= require search
+*= require login
+*= require theory_form
+*= require new_theory
+*= require footer
+*= require theory_index
 */

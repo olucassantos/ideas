@@ -36,7 +36,7 @@ class LoginController < ApplicationController
       end
 
       session[:id]     = admin ? admin.id   : user.id
-      session[:name]   = admin ? admin.name : user.name
+      session[:name]   = admin ? admin.name : user.name.split.first
       session[:tested] = admin ? nil : user.tested
       session[:kind]   = admin ? 2 : 1
       redirect_to "/"

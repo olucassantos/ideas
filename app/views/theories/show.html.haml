@@ -1,36 +1,45 @@
 %p#notice= notice
-.masterBox
+.masterBox{'data-id' => @theory.id}
   .headerBox
     %img.logoTheory{:src => "#{@theory.image.to_s}"}
     .titleBox
-      .Title
+      .votes
+        .up
+          =link_to '+', "#", class: 'up'
+          = @theory.votes.where(point: true).count
+        .down
+          =link_to '-', "#", class: 'down'
+          = @theory.votes.where(point: false).count
+      .favorite
+        =link_to 'Favoritar', "#", class: 'favorite'
+        = @theory.favorites.count
+      .headerTitle
         = @theory.title
-      .Name
+      .headerName
         Por:
         = @theory.user.name
-      .Brief
+      .headerBrief
         = @theory.brief
-      .Adoption
+      .headerAdoption
         -if @theory.choice == true
           =link_to "Adote esta Ideia !", adopt_theory_path(@theory), class: "linkButton"
-  %center
     .Content
       %p
-        .Sub
+        .ContentSub
           O que é?
           %br
-        .Text
-          = @theory.description
+        .ContentText
+          = raw @theory.description
       %p
-        .Sub
+        .ContentSub
           E porque precisamos?
           %br
-        .Text
-          = @theory.justification
+        .ContentText
+          = raw @theory.justification
       %p
-        .Sub
+        .ContentSub
           Quanto isso vai custar?
-        .Value
+        .ContentValue
           ="R$ " + @theory.outlay.to_s
       %p
         -if @theory.choice == true
@@ -52,10 +61,12 @@
           =link_to "#{adoption.user.name}", "/users/#{adoption.user.id}", class: "nameTheory"
       -else
         %h2 Por enquanto ninguém adotou esta Ideia!
-.clear
   -if @theory.user.id == session[:id] || session[:kind] == 2
     =link_to 'Atualizar dados', edit_theory_path(@theory), class: "linkButton"
     |
     = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
-    |
-  =link_to 'Voltar', theories_path, class: "linkButton"
+
+= content_for :javascript do
+  :javascript
+    new Votes()
+    new Favorite()

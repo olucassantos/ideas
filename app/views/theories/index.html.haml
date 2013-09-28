@@ -1,21 +1,37 @@
 %p#notice= notice
 #content
-  -@categories.each do |category|
-    =link_to "#{category.title}", "/categories/#{category.id}/theories", class: "linkButton"
-  %br
-  %br
-  .container
-    %ul.thumb
-      - @theories.each do |theory|
-        %li
-          %a{href: "/theories/#{theory.id}"}
-            -if theory.image
-              %img{alt: "#{theory.title}", src: "#{theory.image.to_s}"}
-            -else
-              %img{alt: "#{theory.title}", src: "/images/pensar.png"}
-            -if session[:kind] == 2
-              %li
-                %td= link_to 'Ver', theory, class: "linkButton"
-                %td= link_to 'Alterar', edit_theory_path(theory), class: "linkButton"
-                %td= link_to 'Apagar', theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
-.clear
+  .categories
+    -@categories.each do |category|
+      =link_to "#{category.title}", "/categories/#{category.id}/theories", class: "category"
+  .boxes
+    -@theories.each do |theory|
+      .box
+        %h1= link_to truncate(theory.title, length: 15, separator:' ').humanize , theory if theory
+        .imageTheory
+          -if theory.image
+            %img.logo{src: "#{theory.image.to_s}"}
+          -else
+            %img{alt: "#{theory.title}", src: "/assets/no-image-found.jpg"}                
+        .dataTheory
+          %p#author= link_to "Por: #{truncate(theory.user.name, length: 20, separator:' ').titleize}", "/users/#{theory.user.id}" if theory
+          %p#views
+            %span
+              %img{src: "/assets/category.png"}
+              = link_to theory.categories.first.title, "/categories/#{theory.categories.first.id}/theories"
+  / .container
+  /   - @theories.each do |theory|
+  /     .theory
+  /       .data
+  /         .title
+  /           =link_to truncate(theory.title, length: 18, separator:' ').humanize , theory
+  /         %a{href: "/theories/#{theory.id}"}
+  /           .image
+  /             -if theory.image
+  /               %img{alt: "#{theory.title}", src: "#{theory.image.to_s}"}
+  /             -else
+  /               %img{alt: "#{theory.title}", src: "/assets/no-image-found.jpg"}
+  /             / -if session[:kind] == 2
+  /             /   %li
+  /             /     %td= link_to 'Ver', theory, class: "linkButton"
+  /             /     %td= link_to 'Alterar', edit_theory_path(theory), class: "linkButton"
+  /             /     %td= link_to 'Apagar', theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"

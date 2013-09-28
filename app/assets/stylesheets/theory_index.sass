@@ -1,0 +1,136 @@
+@import compass
+ 
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neultralColor: #fff8e3
+
+#content
+  margin-bottom: 100px
+  margin-top: 170px
+  .categories
+    +clearfix
+    width: 164px
+    background-color: $lightColor
+    float: left
+    a.category
+      border-radius: 3px
+      color: $shadowColor
+      display: inline-block
+      font-weight: bold
+      font-size: 16px
+      height: 20px
+      line-height: 20px
+      text-align: center
+      text-decoration: none
+      width: 164px
+      &:hover
+        background-color: $shadowColor
+        color: $ultralColor
+        transition: all 0.4s
+      &:active
+        background-color: $ultralColor
+  .boxes
+    position: relative
+    top: 127px
+    margin: 0 auto
+    width: 928px
+    +clearfix
+    h1
+      color: $shadowColor
+      font-size: 35px
+      height: 70px
+      text-align: center
+    .box
+      background-color: $ultralColor
+      border-radius: 10px
+      float: left
+      height: 277px
+      margin-right: 10px
+      width: 222px
+      word-wrap: break-word
+      & h1
+        height: 28px
+        margin-top: 10px
+        margin-bottom: 10px
+        line-height: 24px
+        & a
+          color: $shadowColor
+          font-size: 24px
+          font-weight: bold
+          text-shadow: 1px 1px 1px $shadowColor
+          text-decoration: none
+      & h2
+        color: $shadowColor
+        font-size: 18px
+        margin-top: 5px
+        margin-bottom: 5px
+      p#author
+        font-size: 12px
+        font-style: italic
+        margin: 0 auto
+        text-align: left
+        padding-left: 6px
+        & a
+          color: $shadowColor
+          text-decoration: none
+      p#views
+        font-size: 25px
+        max-width: 255px
+        margin: 0 auto
+        width: 222px
+        background-color: Gold
+        border-bottom-right-radius: 10px
+        border-bottom-left-radius: 10px
+        & a
+          color: $shadowColor
+          text-decoration: none
+          font-size: 20px
+      & span img
+        height: 20px
+        width: 20px
+      & .imageTheory
+        background: $shadowColor
+        border-radius: 4px
+        display: block
+        margin: 0 auto
+        margin-top: 10px
+        padding-top: 5px
+        width: 209px
+        height: 173px
+        & img            
+          height: 168px
+          width: 199px
+          margin-left: 5px
+  // .container
+  //   width: 800px
+  //   float: left
+  //   margin-left: 10px
+  //   & .theory
+  //     background-color: $lightColor
+  //     border-radius: 5px
+  //     float: left
+  //     margin-bottom: 10px
+  //     margin-right: 10px
+  //     height: 250px
+  //     width: 200px
+  //     & .data
+  //       margin: 0 auto
+  //       & .title
+  //         text-align: center
+  //         & a
+  //           color: $shadowColor
+  //           text-decoration: none
+  //           font-size: 20px
+  //           font-weight: bold
+  //       & .image
+  //         background-color: $shadowColor
+  //         width: 190px
+  //         height: 160px
+  //         text-align: center
+  //       & img
+  //         margin-top: 5px
+  //         width: 180px
+  //         height: 150px
