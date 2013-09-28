@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :journals, through: :adoptions
   has_one :image, dependent: :destroy, as: :imageable
   has_many :votes
+  has_many :favorites
 
   def plain_code=(code)
     return if code.blank?

@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   def admin_session?
     session[:kind]==2
   end
+
+  def current_user
+    User.find(session[:id])
+  end
 end

@@ -9,7 +9,7 @@
       -if journal.image
         %img.JournalImage{src: "#{journal.image.to_s}"}
       -else
-        %img.JournalImage{src: "/images/pensar.png"}
+        %img.JournalImage{src: "/assets/no-image-found.png"}
       %br
       %h2=journal.description
       -if journal.adoption.user.id == session[:id] || session[:kind] == 2

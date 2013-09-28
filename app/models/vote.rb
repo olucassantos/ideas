@@ -1,13 +1,10 @@
+#encoding: utf-8
 class Vote < ActiveRecord::Base
+  attr_accessible :point, :theory_id, :user_id
 
-  attr_accessible :user_id, :vote, :theory_id
-
-  #validates
-  validate :user_id, presence: true
-  validate :vote, presence: true
-  validate :theory_id, presence: true
-  #relations
   belongs_to :user
   belongs_to :theory
+
+  validates_presence_of :theory_id, :user_id
 
 end
