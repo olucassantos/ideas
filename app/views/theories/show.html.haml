@@ -65,7 +65,7 @@
     =link_to 'Atualizar dados', edit_theory_path(@theory), class: "linkButton"
     |
     = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
-
+  .fb-comments{"data-href" => "http://clubedeautores.com/theories/#{@theory.id}", "data-width" => "900", "num_posts" => "5"}
 = content_for :javascript do
   :javascript
     new Votes()
