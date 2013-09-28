@@ -3,4 +3,5 @@
 //= require_tree .
 //= require redactor-rails
 //= require fb-root
+//= require google
 
