@@ -1,17 +1,30 @@
 .searchResult
-  %h1= "Sua busca por \"#{truncate(@search, length: 60, separator:' ').humanize}\" retornou:"
-  .stripIndex
-    -@theories.each do |theory|
-      .strip
-        .stripImg
-          %img{src: "#{theory.image.to_s}"}
-        .stripContent
-          .contentTitle
-            =truncate(theory.title, length: 15, separator:' ').titleize
-          .contentBrief
-            =truncate(theory.brief, length: 120, separator:' ').humanize
-          .contentCategory
-            =theory.categories.first.title if theory.categories.first
-            ="Outros" if !theory.categories.first
-
-    
+  -if @theories.first
+    %h1= "Sua busca por \" <span class='found'>#{truncate(@search, length: 60, separator:' ').humanize}</span> \" retornou:".html_safe
+    .stripIndex
+      -@theories.each do |theory|
+        .strip
+          .stripImg
+            %a{href: "/theories/#{theory.id}"}
+              -if theory.image
+                %img{alt: "#{theory.title}", src: "#{theory.image.to_s}"}
+              -else
+                %img{alt: "#{theory.title}", src: "/assets/no-image-found.jpg"}
+          .stripContent
+            .contentTitle
+              =link_to truncate(theory.title, length: 15, separator:' ').titleize, "/theories/#{theory.id}"
+            .contentBrief
+              =truncate(theory.brief, length: 120, separator:' ').humanize
+            .contentCategory
+              =theory.categories.first.title if theory.categories.first
+              ="Outros" if !theory.categories.first
+          .endStrip
+  -else
+    .searchResult
+      %h1= "Sua busca por \" <span class='error'>#{truncate(@search, length: 60, separator:' ').humanize}</span>  \" não retornou nenhum resultado;".html_safe
+      %h2 Tente se lembrar do título ou descrição da idea.
+    .searchAgain
+      =render 'layouts/search'
+    = content_for :javascript do
+      :javascript
+        new RemoveInput()

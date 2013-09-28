@@ -10,7 +10,7 @@
   -if @journal.image
     %img{width: "400", height: "300" ,src: "#{@journal.image.to_s}" }
   -else
-    %img{width: "400", height: "300" ,src: "/images/pensar.png" }
+    %img{width: "400", height: "300" ,src: "/assets/no-image-found.jpg" }
 
 = link_to 'Editar', edit_journal_path(@journal), class:"linkButton"
 =link_to 'Voltar', "/adoptions/#{@journal.adoption.id}/journal", class:"linkButton"
