@@ -1,14 +1,15 @@
-%h1{align: "center"}
-  Bem vindo de volta!
-%center
-  %p#notice= notice
-= form_tag "/entrar" do
-  %p{align: "center"}
-    %label{:for => "email"} E-mail
-    %input#email{:name => "email", :type => "email"}/
-  %p{align: "center"}
-    %label{:for => "password"} Senha
-    %input#code{:name => "code", :type => "password"}/
-  %p{align: "center"}
-    %input{:type => "submit", :value => "Autenticar"}/
-.clear
+.loginArea
+  %h1
+    %p#notice= notice
+  %h1 Yo! Você por aqui?
+  %h2 Faça seu login e vamos pensar um pouco!
+  = form_tag "/entrar" do
+    .inputs
+      %p
+        %label{for: "email"} E-mail
+        %input#field{name: "email", type: "email"}
+      %p
+        %label{for: "password"} Senha
+        %input#field{name:"code", type: "password"}
+      %p
+        %input{type: "submit", value: "Entrar", class: 'enter'}

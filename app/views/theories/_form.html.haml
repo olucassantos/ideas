@@ -1,75 +1,37 @@
-= form_for(@theory, :html =>{:multipart => true}) do |f|
-  -if @theory.errors.any?
-    #error_explanation
-      %h2
-        = "Algo não me deixou salvar esta ideia."
-        %br
-        = "Não esqueça de colocar a imagen Novamente."
+.formContent
+  .inputs
+    = form_for(@theory, :html =>{:multipart => true}) do |f|
+      =render 'theories/errors'
+      -if params[:user]
+        = hidden_field_tag :user_id, params[:user]
+      .data
+        .field
+          %p#label= f.label :title
+          = f.text_field :title, class: 'textinput', maxlength: 100
+        .field
+          %p#label= f.label :description
+          = f.text_area :description, class: "redactor"
+        .field
+          %p#label= f.label :justification
+          = f.text_area :justification, class: "redactor"
+        .field
+          %p#label= f.label :brief
+          = f.text_area :brief, maxlength: 255, class: 'brief'
+      .options
+        .field
+          %p#label= f.label :outlay
+          = f.text_field :outlay, class: 'textinput'
+        .choice
+          %p Como as pessoas podem te ajudar?
+          = f.select(:choice, options_for_select([['Desenvolvendo minha ideia', true], ['Me financiando.', false]]))
+        .kind
+          %p Todos podem adotar sua idea?
+          = f.select(:kind, options_for_select([['Sim', true], ['Não', false]]))
+        .categories
+          %p#categoryTitle Selecione as categorias que sua ideia se encaixa.
+          = f.collection_select :category_ids, Category.all, :id , :title, {multiple: true}, name: 'theory[category_ids][]'
+          = f.collection_select :category_ids, Category.all, :id , :title, {multiple: true}, name: 'theory[category_ids][]'
+          = f.collection_select :category_ids, Category.all, :id , :title, {multiple: true}, name: 'theory[category_ids][]'
 
-      %ul
-        - @theory.errors.full_messages.each do |msg|
-          %center
-            = msg
-  = render 'shared/image_field', f: f
-  %br
-  %br
-  .field
-    -if params[:user]
-      = hidden_field_tag :user_id, params[:user]
-  .field
-    .Text Titulo:
-    %br/
-    = f.text_field :title
-    %br
-    %br
-  .field
-    .Text Descrição:
-    %br/
-    = f.text_area :description, class: "redactor", rows: 40, cols: 100
-  .field
-    .Text Justificativa:
-    %br/
-    = f.text_area :justification, class: "redactor", rows: 40, cols: 100
-  .field
-    .Text Resumo:
-    %br/
-    = f.text_area :brief, maxlength: 255
-  .field
-    .Text Gastos:
-    %br/
-    R$
-    = f.text_field :outlay
-    %br
-    %br
-    %hr.horizontalrule
-  .ultrabox
-    .field
-      .desc Em que as pessoas podem te ajudar?
-      %table
-        %tr
-          %th= f.radio_button :choice, true, checked: true
-          %th.choi= f.label "A desenvolver minha ideia."
-        %tr
-          %th= f.radio_button :choice, false
-          %th.choi= f.label "Me financiando"
-    %hr.horizontalrule
-    .field
-      .desc Todos podem adotar sua ideia?
-      %table
-        %tr
-          %th= f.radio_button :kind, true, checked: true
-          %th.choi= f.label "Sim"
-        %tr
-          %th= f.radio_button :kind, false
-          %th.choi= f.label "Não"
-    %hr.horizontalrule
-    .field
-      .desc Categorias:
-      %br/
-      %table
-      - Category.find(:all).each do |category|
-        %tr
-          %th= check_box_tag "theory[category_ids][]", category.id, @theory.categories.include?(category)
-          %th.choi= category.title
-  .actions
-    = f.submit
+        = render 'shared/image_field', f: f
+        =f.submit class: 'enter'
