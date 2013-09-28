@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903000123) do
+ActiveRecord::Schema.define(:version => 20130925194933) do
 
   create_table "admins", :force => true do |t|
     t.string   "name",                     :null => false
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(:version => 20130903000123) do
   add_index "categories_theories", ["category_id"], :name => "index_categories_theories_on_category_id"
   add_index "categories_theories", ["theory_id"], :name => "index_categories_theories_on_theory_id"
 
+  create_table "favorites", :force => true do |t|
+    t.boolean  "check",      :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "theory_id",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favorites", ["theory_id"], :name => "index_favorites_on_theory_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
+
   create_table "images", :force => true do |t|
     t.string   "title"
     t.datetime "created_at",     :null => false
@@ -61,6 +72,23 @@ ActiveRecord::Schema.define(:version => 20130903000123) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
 
   create_table "theories", :force => true do |t|
     t.string   "title",                                        :null => false
@@ -89,6 +117,14 @@ ActiveRecord::Schema.define(:version => 20130903000123) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.boolean  "status"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.boolean  "point"
+    t.integer  "user_id"
+    t.integer  "theory_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

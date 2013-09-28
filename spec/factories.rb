@@ -29,6 +29,12 @@ FactoryGirl.define do
     adoption
   end
 
+  factory :vote do
+    point true
+    user_id 1
+    theory_id 2
+  end
+
   factory :theory do
     title 'Planetariun'
     description 'Descição para a ideia, pode ter caracteres infinitos'

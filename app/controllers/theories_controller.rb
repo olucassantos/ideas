@@ -18,7 +18,7 @@ class TheoriesController < ApplicationController
         return
       end
 
-      if @theory.choice == true
+      if @theory.choice == true || @theory.user == current_user
         if @theory.adopted_by?(session[:id]).size>0
           flash[:notice] = "Opa! Você já adotou esta ideia!"
           redirect_to "/users/#{session[:id]}"
@@ -71,17 +71,12 @@ class TheoriesController < ApplicationController
   end
 
   def new
-      if admin_session?
-        flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
-        redirect_to "/"
-      return
-    end
-
     if session[:tested] || admin_session?
       @theory = Theory.new
+      @users = User.find(:all)
       respond_with @theory
     else
-      flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
+      flash[:notice] = "Você se cadastrou mas ainda não confirmou seu cadastro."
       redirect_to "/users/#{session[:id]}"
     end
   end
@@ -103,14 +98,22 @@ class TheoriesController < ApplicationController
 
   def create
    if admin_session?
-      flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
-      redirect_to "/"
-      return
+      @theory = Theory.new(params[:theory])
+      flash[:notice] = "Ideia criada com sucesso!" if @theory.save
+      respond_with @theory
+      return    
     end
 
    if session[:tested] && !admin_session?
+      p '/'*200 
       @theory = user_find.theories.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
+      
+      if !@theory.categories.first
+        @theory.category_ids = Category.find(6).id
+        @theory.save
+      end
+
       respond_with @theory
     else
       flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
@@ -127,6 +130,11 @@ class TheoriesController < ApplicationController
         params[:theory][:category_ids] ||= []
         @theory = Theory.find(params[:id])
         flash[:notice] = "Dados da ideia atualizados com sucesso." if @theory.update_attributes(params[:theory])
+        if !@theory.categories.first
+          @theory.category_ids = Category.find(6).id
+          @theory.save
+        end
+        
         respond_with @theory
       else
          flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
@@ -143,6 +151,11 @@ class TheoriesController < ApplicationController
       flash[:notice] = "Você não pode apagar uma idea que não te pertence."
       redirect_to "/theories"
     end
+  end
+
+  def search
+    @search = params[:search]
+    @theories = Theory.search params[:search]
   end
 
   private

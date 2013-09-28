@@ -3,23 +3,19 @@ class Theory < ActiveRecord::Base
   include ImageSaver
   attr_accessible :brief, :choice, :description, :justification, :outlay, :title, :kind, :user_id, :view, :image_title, :data_stream, :category_ids
         #validates
-        validates  :title, presence: true, length: {maximum: 255}, format:{with: /^[A-Za-z ]+$/}
-        validates  :outlay, presence: true
-        validate    :choice, presence: true
-        validate    :kind, presence: true
-        validates  :brief, presence:true
-        validates   :description, presence:true
-        validates   :justification, presence:true
+        validates  :title, length: {maximum: 100}, format:{with: /^[A-Za-z ]+$/}
+        validates_presence_of :outlay, :choice, :kind, :brief, :description, :justification, :title
         validates_numericality_of :outlay
         validates_length_of :brief, minimum: 50, maximum: 255
-        validates_length_of :description, minimum: 50
-        validates_length_of :justification, minimum: 50
+        validates_length_of :description, :justification, minimum: 50
         #relations
         belongs_to :user
         has_many :adoptions,  dependent: :destroy
         has_one :image, as: :imageable,  dependent: :destroy
         has_and_belongs_to_many :categories
         has_many :votes
+        has_many :favorites
+        accepts_nested_attributes_for :categories, allow_destroy: true, reject_if: proc{|attrs| attrs['id'].blank?}
 
   def inc_view
     self.view = self.view ? self.view+1 : 0
@@ -28,4 +24,10 @@ class Theory < ActiveRecord::Base
   def adopted_by?(user_id)
     adoptions.where(user_id: user_id)
   end
+
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, conditions: ['title LIKE ? OR description LIKE ? OR justification LIKE ? OR brief LIKE ?', search_condition, search_condition, search_condition, search_condition])
+  end
+
 end

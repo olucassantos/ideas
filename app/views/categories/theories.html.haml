@@ -10,7 +10,7 @@
             -if theory.image
               %img{alt: "#{theory.title}", src: "#{theory.image.to_s}"}
             -else
-              %img{alt: "#{theory.title}", src: "/images/pensar.png"}
+              %img{alt: "#{theory.title}", src: "/assets/no-image-found.png"}
             -if session[:kind] == 2
               %li
                 %td= link_to 'Ver', theory, class: "linkButton"
