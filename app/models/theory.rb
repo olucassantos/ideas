@@ -4,7 +4,7 @@ class Theory < ActiveRecord::Base
   attr_accessible :brief, :choice, :description, :justification, :outlay, :title, :kind, :user_id, :view, :image_title, :data_stream, :category_ids
         #validates
         validates  :title, length: {maximum: 100}, format:{with: /^[A-Za-z ]+$/}
-        validates_presence_of :outlay, :choice, :kind, :brief, :description, :justification, :title
+        validates_presence_of :outlay, :brief, :description, :justification, :title
         validates_numericality_of :outlay
         validates_length_of :brief, minimum: 50, maximum: 255
         validates_length_of :description, :justification, minimum: 50
