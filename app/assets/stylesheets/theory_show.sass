@@ -8,6 +8,8 @@ $neutralColor: #fff8e3
 
 .masterBox
   margin-top: 100px
+  margin-bottom: 70px
+  +clearfix
   & .data
     width: 980px
     margin: 0 auto
@@ -35,22 +37,32 @@ $neutralColor: #fff8e3
             width: 298px
             height: 22px
             & #up
-              width: 149px
+              margin-top: 4px
+              background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
+              width: 147px
               background-color: green
               float: left
               text-align: center
               border-radius: 3px
+              box-shadow: -2px -2px 1px #000
             & #down
+              margin-top: 4px
+              margin-left: 3px
+              background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
               border-radius: 3px
               float: left
-              width: 149px
+              width: 147px
               background-color: red
               text-align: center
+              box-shadow: -2px -2px 1px #000
           & .favorite
+            margin-top: 10px
+            background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
             border-radius: 3px
             width: 298px
-            background: yellow
+            background-color: yellow
             text-align: center
+            box-shadow: -2px -2px 1px #000
           & .donation
             text-align: center
             margin-top: 10px
@@ -89,6 +101,8 @@ $neutralColor: #fff8e3
               text-decoration: none
               color: $shadowColor
     .content
+      margin-top: 20px
+      margin-bottom: 20px
       box-shadow: -3px -3px 20px #000
       border-radius: 16px
       background-color: $ultralColor
@@ -103,6 +117,92 @@ $neutralColor: #fff8e3
         font-size: 26px
         color: $highColor
         text-shadow: -1px -1px 1px #000
+  .adoptions
+    +clearfix
+    text-align: center
+    width: 980px
+    margin: 0 auto
+    background-color: $ultralColor
+    margin-top: 20px
+    margin-bottom: 20px
+    padding-bottom: 10px
+    border-radius: 16px
+    box-shadow: -3px -3px 20px #000
+    & h2
+      font-weight: bold
+      text-shadow: -1px -1px 1px #000
+      font-size: 30px
+      text-align: center
+      margin-bottom: 0
+      color: $shadowColor
+    & .users
+      +clearfix
+      margin: 0 auto
+      width: 800px
+    & .image
+      float: left
+      text-align: center
+      background: $shadowColor
+      border-radius: 4px
+      width: 60px
+      height: 60px
+      margin-left: 5px
+      & img#adopter
+        margin-top: 5px
+        height: 50px
+        width: 50px
+  .adminPanel
+    +clearfix
+    text-align: center
+    width: 980px
+    margin: 0 auto
+    background-color: #CD5C5C
+    margin-top: 20px
+    margin-bottom: 20px
+    padding-bottom: 10px
+    border-radius: 16px
+    box-shadow: -3px -3px 20px #000
+    & .buttons
+      margin: 0 auto
+      width: 441px
+      +clearfix
+      & .button
+        background-color: $ultralColor
+        width: 200px
+        float: left
+        margin-left: 20px
+        margin-top: 10px
+        border-radius: 6px
+        & a
+          text-decoration: none
+          color: $shadowColor
+          text-shadow: -1px -1px 1px #000
+          font-size: 20px
+          &:hover
+            transition: all 15s
+            color: red
+  .socialPlugins
+    width: 980px
+    margin: 0 auto
+    .links
+      +clearfix
+      margin: 0 auto
+      width: 500px
+      .twitter
+        float: left
+        margin-left: 67px
+      .google
+        float: left
+      .reddit
+        margin-left: 67px
+        float: left
+      .like
+        margin-left: 67px
+        float: left
+
+
+
+
 
 
 
