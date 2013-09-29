@@ -1,6 +1,6 @@
 #encoding: utf-8
 class FavoritesController < ApplicationController
- 
+
  before_filter :logged?
 
  def check
@@ -8,16 +8,12 @@ class FavoritesController < ApplicationController
   @favorite = searched_favorite
     if @favorite
       @favorite.destroy
+      render json: {status: @favorite.save, count: @theory.favorites.count}
     else
       @favorite = Favorite.create(check: true, user_id: current_user.id, theory_id: @theory.id)
-      render json: {status: @favorite.save}
+      render json: {status: @favorite.save, count: @theory.favorites.count}
     end
  end
-
- def ownerFavorite
-
- end
-
 
 private
  def searched_favorite
