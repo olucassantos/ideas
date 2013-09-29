@@ -1,0 +1,109 @@
+@import compass
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.masterBox
+  margin-top: 100px
+  & .data
+    width: 980px
+    margin: 0 auto
+    & .presentation
+      & #presentation
+        +clearfix
+        background-color: $lightColor
+        padding-left: 15px
+        padding-top: 15px
+        padding-bottom: 15px
+        border-radius: 16px
+        & .image
+          float: left
+          & .logoTheory
+            background-color: $shadowColor
+            width: 298px
+            height: 198px
+            text-align: center
+            border-radius: 4px
+            img
+              margin-top: 5px
+              width: 288px
+              height: 188px
+          & .votes
+            width: 298px
+            height: 22px
+            & #up
+              width: 149px
+              background-color: green
+              float: left
+              text-align: center
+              border-radius: 3px
+            & #down
+              border-radius: 3px
+              float: left
+              width: 149px
+              background-color: red
+              text-align: center
+          & .favorite
+            border-radius: 3px
+            width: 298px
+            background: yellow
+            text-align: center
+          & .donation
+            text-align: center
+            margin-top: 10px
+        & .brief
+          width: 600px
+          float: left
+          color: $shadowColor
+          margin-left: 10px
+          & p#title
+            font-weight: bold
+            text-shadow: -1px -1px 1px #000
+            font-size: 30px
+            text-align: center
+            margin-bottom: 0
+          & p#author
+            margin: 0 auto
+            text-align: center
+            font-size: 15px
+            font-style: italic
+            & a
+              text-decoration: none
+              color: $shadowColor
+              &:hover
+                background-color: $lightColor
+                border-radius: 4px
+                transition: all 5s
+          & p#brief
+            font-size: 18px
+            text-align: center
+          & p#adopte
+            text-align: center
+            font-size: 30px
+            font-weight: bold
+            text-shadow: -1px -1px 1px #000
+            a
+              text-decoration: none
+              color: $shadowColor
+    .content
+      box-shadow: -3px -3px 20px #000
+      border-radius: 16px
+      background-color: $ultralColor
+      padding: 0 10px 10px 10px
+      & h1
+        font-size: 26px
+        text-align: center
+        text-shadow: -1px -1px 1px #000
+        color: $shadowColor
+      & h2
+        text-align: center
+        font-size: 26px
+        color: $highColor
+        text-shadow: -1px -1px 1px #000
+
+
+
+

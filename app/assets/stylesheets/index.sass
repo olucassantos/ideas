@@ -4,10 +4,10 @@ $highColor: #046380
 $lightColor: #e6e2af
 $ultralColor: #efecca
 $shadowColor: #33332d
-$neultralColor: #fff8e3
+$neutralColor: #fff8e3
 
 body
-  background-color: $neultralColor
+  background-color: $neutralColor
   .aboutHeader
     background-color: $ultralColor
     width: 101%
@@ -19,10 +19,16 @@ body
     box-shadow: 1px 4px 2px $ultralColor
     .content
       width: 1164px
-      height: 1880px
+      height: 2000px
       margin: 0 auto
-      padding-top: 130px
-      & .video 
+      padding-top: 100px
+      +clearfix
+      & p#notice
+        font-size: 25px
+        color: #CD5C5C
+        font-weight: bold
+        font-variant: small-caps
+      & .video
         height: 328px
         width: 572px
         margin-right: 30px
@@ -35,7 +41,7 @@ body
           margin-top: 8px
           width: 555px
           height: 313px
-      & .text 
+      & .text
         float: left
         position: relative
         width: 555px
@@ -59,7 +65,7 @@ body
           height: 100px
           text-align: center
           background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
-          background-color: $shadowColor
+          background-color: $highColor
           border-radius: 4px
           color: $ultralColor
           font-weight: bold
@@ -70,10 +76,11 @@ body
           display: block
           line-height: 70px
           margin: 0 auto
+      .boxes#lasts
+        margin-bottom: 30px
       .boxes
         position: relative
         top: 127px
-        margin: 0 auto
         +clearfix
         h1#tops
           color: $shadowColor
@@ -96,7 +103,7 @@ body
               color: $shadowColor
               font-size: 24px
               font-weight: bold
-              text-shadow: 1px 1px 1px $shadowColor
+              text-shadow: 1px 1px 1px #000
               text-decoration: none
           & h2
             color: $shadowColor
@@ -141,7 +148,7 @@ body
             padding-top: 5px
             width: 209px
             height: 173px
-            & img            
+            & img
               height: 168px
               width: 199px
 

@@ -1,43 +1,48 @@
 @import compass
- 
+
 //Color Schema
 $highColor: #046380
 $lightColor: #e6e2af
 $ultralColor: #efecca
 $shadowColor: #33332d
-$neultralColor: #fff8e3
+$neutralColor: #fff8e3
 
 #content
-  margin-bottom: 100px
-  margin-top: 170px
+  +clearfix
+  margin: 0 auto
+  margin-bottom: 40px
+  margin-top: 100px
+  width: 980px
   .categories
-    +clearfix
-    width: 164px
-    background-color: $lightColor
-    float: left
-    a.category
-      border-radius: 3px
-      color: $shadowColor
-      display: inline-block
-      font-weight: bold
-      font-size: 16px
-      height: 20px
-      line-height: 20px
-      text-align: center
-      text-decoration: none
-      width: 164px
-      &:hover
-        background-color: $shadowColor
-        color: $ultralColor
-        transition: all 0.4s
-      &:active
-        background-color: $ultralColor
+    max-width: 980px
+    height: 30px
+    line-height: 30px
+    border-radius: 4px
+    & .category
+      margin: 0 auto
+      width: 800px
+      a.category
+        max-width: 115px
+        border-radius: 3px
+        color: $shadowColor
+        display: inline-block
+        font-weight: bold
+        font-size: 16px
+        height: 30px
+        line-height: 20px
+        margin-left: 13px
+        text-align: center
+        text-decoration: none
+        &:hover
+          background-color: $shadowColor
+          color: $ultralColor
+          transition: all 0.4s
+        &:active
+          background-color: $ultralColor
   .boxes
-    position: relative
-    top: 127px
     margin: 0 auto
+    padding-top: 10px
     width: 928px
-    +clearfix
     h1
       color: $shadowColor
       font-size: 35px
@@ -47,10 +52,12 @@ $neultralColor: #fff8e3
       background-color: $ultralColor
       border-radius: 10px
       float: left
-      height: 277px
+      height: 275px
       margin-right: 10px
+      margin-bottom: 10px
       width: 222px
       word-wrap: break-word
+      box-shadow: 1px 1px 3px
       & h1
         height: 28px
         margin-top: 10px
@@ -84,6 +91,7 @@ $neultralColor: #fff8e3
         background-color: Gold
         border-bottom-right-radius: 10px
         border-bottom-left-radius: 10px
+        border-bottom: 0.5px solid
         & a
           color: $shadowColor
           text-decoration: none
@@ -100,7 +108,7 @@ $neultralColor: #fff8e3
         padding-top: 5px
         width: 209px
         height: 173px
-        & img            
+        & img
           height: 168px
           width: 199px
           margin-left: 5px

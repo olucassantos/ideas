@@ -8,4 +8,6 @@
 *= require new_theory
 *= require footer
 *= require theory_index
+*= require about
+*= require theory_show
 */
