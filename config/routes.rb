@@ -1,6 +1,7 @@
 Ideia::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
+  root to: "index#index"
 
   resources :journals
 
@@ -18,26 +19,7 @@ Ideia::Application.routes.draw do
 
   resources :admins
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
-
-  post "register/new"
-  get "index/index"
-  get "users/message_return"
-  get "login/login"
-  post "login/login"
-  get "login/logout"
-  post "login/logout"
-  get 'users/validated'
-  get 'theories/adopted'
-  post '/vote/:theory_id/:vote' => 'votes#vote'
-  post '/favorite/:theory_id/' => 'favorites#check'
-  post '/theories/search' => 'theories#search'
-
-  match "entrar" => "login#login"
-  match "sair" => "login#logout"
-  root to: "index#index"
+  resources :users
 
   resources :theories do
      member do
@@ -46,9 +28,28 @@ Ideia::Application.routes.draw do
     end
    end
 
-  resources :users
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 
+  #get
+  get 'theories/adopted'
+  get 'users/validated'
+  get 'index/index'
+  get 'index/about'
+  get 'users/message_return'
+  get 'login/login'
+  get 'login/logout'
+  #post
+  post 'login/login'
+  post 'login/logout'
+  post 'register/new'
+  post '/vote/:theory_id/:vote' => 'votes#vote'
+  post '/favorite/:theory_id/' => 'favorites#check'
+  post '/theories/search' => 'theories#search'
 
+  match 'entrar' => 'login#login'
+  match 'sair' => 'login#logout'
   match '/users/:token/confirm' => 'users#confirm'
   match '/users/:id/send' => 'users#sendMail'
   match '/adoptions/new/:theory' => 'adoptions#new'
