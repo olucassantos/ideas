@@ -1,6 +1,6 @@
 #encoding: utf-8
 class VotesController < ApplicationController
- 
+
  before_filter :logged?
 
  def vote
@@ -11,14 +11,14 @@ class VotesController < ApplicationController
     return
   end
 
-  if searched_vote 
+  if searched_vote
     @vote = searched_vote
-    
+
     if @vote.point == @point
       @vote.destroy
     else
       @vote.point = @point
-      render json: {status: @vote.save}
+      render json: {status: @vote.save, true: @theory.votes.where(point: true).count , false: @theory.votes.where(point: false).count }
     end
 
   else
