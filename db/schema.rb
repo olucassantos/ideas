@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925194933) do
+ActiveRecord::Schema.define(:version => 20130929042256) do
 
   create_table "admins", :force => true do |t|
     t.string   "name",                     :null => false
@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(:version => 20130925194933) do
   create_table "favorites", :force => true do |t|
     t.boolean  "check",      :null => false
     t.integer  "user_id",    :null => false
-    t.integer  "theory_id",  :null => false
+    t.integer  "theory_id"
+    t.integer  "tip_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "favorites", ["theory_id"], :name => "index_favorites_on_theory_id"
+  add_index "favorites", ["tip_id"], :name => "index_favorites_on_tip_id"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "images", :force => true do |t|
@@ -104,6 +106,19 @@ ActiveRecord::Schema.define(:version => 20130925194933) do
     t.datetime "updated_at",                                   :null => false
   end
 
+  create_table "tips", :force => true do |t|
+    t.string   "title",       :null => false
+    t.string   "tags",        :null => false
+    t.text     "description", :null => false
+    t.text     "brief",       :null => false
+    t.integer  "user_id",     :null => false
+    t.integer  "view"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tips", ["user_id"], :name => "index_tips_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "name",       :limit => 200, :null => false
     t.string   "email",      :limit => 200, :null => false
@@ -123,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130925194933) do
     t.boolean  "point"
     t.integer  "user_id"
     t.integer  "theory_id"
+    t.integer  "tip_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

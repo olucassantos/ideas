@@ -215,6 +215,7 @@ pt-BR:
     errors:
       <<: *errors
     models:
+      tip: "Dica"
       user : "Usuário"
       theory : "Ideia"
       journal: "Diário"
@@ -222,6 +223,12 @@ pt-BR:
       categories: "Categorias"
       admins: "Administradores"
     attributes:
+       tip:
+        title: "Titulo"
+        description: "Descrição"
+        brief: "Resumo"
+        view: "Visualizações"
+        tags: "Palavras chaves"
        user:
         name: "Nome"
         email: "E-mail"

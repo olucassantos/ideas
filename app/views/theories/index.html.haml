@@ -1,5 +1,12 @@
 %p#notice= notice
 #content
+  %h1 Ideias!
+  -if session[:kind] == 2
+    .adminPanel
+      .buttons
+        .button
+          =link_to "+Idea!", new_theory_path, class: "navlinks"
+  %p Procure dentre os mais variados tipos de ideias!
   .categories
     .category
       -@categories.each do |category|
@@ -19,9 +26,3 @@
             %span
               %img{src: "/assets/category.png"}
               = link_to theory.categories.first.title, "/categories/#{theory.categories.first.id}/theories"
-
-            / -if session[:kind] == 2
-            /   %li
-            /     %td= link_to 'Ver', theory, class: "linkButton"
-            /     %td= link_to 'Alterar', edit_theory_path(theory), class: "linkButton"
-            /     %td= link_to 'Apagar', theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"

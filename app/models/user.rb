@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates :code, presence: true,format: {with: /^[a-zA-Z0-9çÇ]+$/}, length: {maximum: 15}, length: {minimum: 5}
   #relations
   has_many  :theories , dependent: :destroy
+  has_many :tips, dependent: :destroy
   has_many :adoptions, dependent: :destroy
   has_many :journals, through: :adoptions
   has_one :image, dependent: :destroy, as: :imageable

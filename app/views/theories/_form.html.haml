@@ -5,6 +5,10 @@
       -if params[:user]
         = hidden_field_tag :user_id, params[:user]
       .data
+        -if session[:kind] == 2
+          .adminField
+            %p#label Selecione o Usuário
+            = f.collection_select :user_id, User.all, :id , :name, name: 'theory[user_id]'
         .field
           %p#label= f.label :title
           = f.text_field :title, class: 'textinput', maxlength: 100

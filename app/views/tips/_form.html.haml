@@ -1,0 +1,24 @@
+.formContent
+  .inputs
+    = form_for(@tip, :html =>{:multipart => true}) do |f|
+      =render 'tips/errors'
+      .data
+        -if session[:kind] == 2
+          .adminField
+            %p#label Selecione o Usuário
+            = f.collection_select :user_id, User.all, :id , :name, name: 'theory[user_id]'
+        .field
+          %p#label= f.label :title
+          = f.text_field :title, class: 'textinput', maxlength: 100
+        .field
+          %p#label= f.label :description
+          = f.text_area :description, class: "redactor"
+        .field
+          %p#label= f.label :brief
+          = f.text_area :brief, maxlength: 255, class: 'brief'
+        .tags
+          %p#categoryTitle Palavras chaves:
+          = f.text_field :tags, class: 'textinput', maxlength: 255
+
+        = render 'shared/image_field', f: f
+        =f.submit class: 'enter'

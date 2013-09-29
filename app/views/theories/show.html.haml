@@ -58,10 +58,10 @@
           = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }
   .socialPlugins
     .links
+      .like=render 'theories/like'
       .google=render 'theories/googleplus'
       .reddit=render 'theories/reddit'
       .twitter=render 'theories/twitter'
-      .like=render 'theories/like'
       .facebook=render 'theories/facebook'
 
 = content_for :javascript do

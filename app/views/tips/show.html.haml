@@ -1,0 +1,46 @@
+%p#notice= notice
+.masterBox{'data-id' => @tip.id}
+  .data
+    .presentation#tips
+      .content#presentation
+        .image
+          .logoTheory
+            %img{:src => "#{@tip.image.to_s}"}
+          .votes
+            .vote#up
+              #count
+                .point= @tip.votes.where(point: true).count
+            .vote#down
+              #count
+                .point= @tip.votes.where(point: false).count
+          .favorite
+            = render 'tips/favorites'
+        .brief
+          %p#title= @tip.title
+          %p#author
+            Por:
+            =link_to @tip.user.name, @tip.user
+          %p#brief= @tip.brief
+    .content#tips
+      %p
+        %h2 O que é?
+        = raw @tip.description
+  -if @tip.user.id == session[:id] || session[:kind] == 2
+    .adminPanel
+      .buttons
+        .button
+          = link_to 'Atualizar dados', edit_tip_path(@tip)
+        .button
+          = link_to 'Apagar', @tip, method: :delete, data: { confirm: 'Are you sure?' }
+  .socialPlugins
+    .links
+      .like=render 'tips/social/like'
+      .google=render 'tips/social/googleplus'
+      .reddit=render 'tips/social/reddit'
+      .twitter=render 'tips/social/twitter'
+      .facebook=render 'tips/social/facebook'
+
+= content_for :javascript do
+  :javascript
+    new VotesTip()
+    new FavoriteTip()

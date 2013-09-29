@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.boolean :point
       t.integer :user_id
       t.integer :theory_id
-
+      t.integer :tip_id
       t.timestamps
     end
   end

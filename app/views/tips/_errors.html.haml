@@ -1,0 +1,8 @@
+-if @tip.errors.any?
+  #error_explanation
+    %h2
+      = "Algo não me deixou salvar esta dica."
+      = "Não esqueça de colocar a imagem Novamente."
+    %ul
+      - @tip.errors.full_messages.each do |msg|
+        #erros= msg

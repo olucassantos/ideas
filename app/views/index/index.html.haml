@@ -37,6 +37,25 @@
                   %img{src: "/assets/views.png"}
                   = theory.view if theory
 
+      .boxes#tips
+        %h1#tops Dicas para o dia-a-dia...
+        -@tips.each do |tip|
+          .box#tips
+            %h1= link_to truncate(tip.title, length: 15, separator:' ').humanize , "tips/#{tip.id}" if tip
+            .imageTheory
+              -if tip.image
+                %img.logo{src: "#{tip.image.to_s}"}
+              -else
+                %img{alt: "#{tip.title}", src: "/assets/no-image-found.jpg"}
+            .dataTheory
+              %p#author= link_to "Por: #{tip.user.name}", "/users/#{tip.user.id}" if tip
+              %h2= "O que é?" if tip
+              %p#brief= tip.brief if tip
+              %p#views.tips
+                %span#date
+                  %img{src: "/assets/calendar.png"}
+                  = tip.created_at.strftime("%d/%m/%y") if tip
+
       .boxes#lasts
         %h1#tops As ultimas ideias...
         -@lasts.each do |theory|

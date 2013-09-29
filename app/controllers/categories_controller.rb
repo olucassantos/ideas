@@ -55,6 +55,15 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def tips
+    @category = Category.find(params[:id]) rescue nil
+    if @category
+      @tips = @category.tips
+    else
+      redirect_to "/404"
+    end
+  end
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy

@@ -14,6 +14,7 @@ Ideia::Application.routes.draw do
   resources :categories do
     member do
       get "theories"
+      get "tips"
     end
   end
 
@@ -27,6 +28,8 @@ Ideia::Application.routes.draw do
           get "abandon"
     end
    end
+
+  resources :tips
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -46,6 +49,8 @@ Ideia::Application.routes.draw do
   post 'register/new'
   post '/vote/:theory_id/:vote' => 'votes#vote'
   post '/favorite/:theory_id/' => 'favorites#check'
+  post '/votes/:tip_id/:vote' => 'votes#tipv'
+  post '/favorites/:tip_id/' => 'favorites#tipf'
   post '/theories/search' => 'theories#search'
 
   match 'entrar' => 'login#login'

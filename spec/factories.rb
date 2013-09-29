@@ -47,6 +47,15 @@ FactoryGirl.define do
     view 150
   end
 
+  factory :tip do
+    title 'Planetariun'
+    description 'Descição para a ideia, pode ter caracteres infinitos'
+    brief 'Resumo, o texto que explica rapidamente o que significa a ideia.'
+    tags 'plantas, cheiro, doces'
+    user_id 1
+    view 150
+  end
+
   factory :adoption, traits: [:singleton_user] do
     theory
   end
