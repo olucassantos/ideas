@@ -101,14 +101,14 @@ class TheoriesController < ApplicationController
       @theory = Theory.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
       respond_with @theory
-      return    
+      return
     end
 
    if session[:tested] && !admin_session?
-      p '/'*200 
+      p '/'*200
       @theory = user_find.theories.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
-      
+
       if !@theory.categories.first
         @theory.category_ids = Category.find(6).id
         @theory.save
@@ -134,7 +134,7 @@ class TheoriesController < ApplicationController
           @theory.category_ids = Category.find(6).id
           @theory.save
         end
-        
+
         respond_with @theory
       else
          flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
