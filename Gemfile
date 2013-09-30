@@ -10,6 +10,7 @@ gem 'kaminari'
 gem 'spork', '~> 1.0rc'
 gem 'redactor-rails'
 gem "carrierwave"
+gem 'compass-rails'
 
 group :assets do
   gem 'haml-rails'
@@ -18,7 +19,6 @@ group :assets do
   gem 'jquery-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 2.2.1'
-  gem 'compass-rails'
 end
 
 group :development do
