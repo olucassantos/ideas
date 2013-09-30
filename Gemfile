@@ -11,10 +11,11 @@ gem 'spork', '~> 1.0rc'
 gem 'redactor-rails'
 gem "carrierwave"
 gem 'compass-rails'
+gem 'compass'
+gem 'sass-rails',   '~> 3.2.3'
 
 group :assets do
   gem 'haml-rails'
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'jquery-rails'
   gem 'therubyracer', :platforms => :ruby
