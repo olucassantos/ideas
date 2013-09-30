@@ -23,6 +23,4 @@ production:
   encoding: unicode
   database: db/production
   pool: 5
-  username: usuario_teste
-  password: senha
   timeout: 5000
