@@ -99,7 +99,7 @@ class UsersController < ApplicationController
   def confirm
     @user = User.where(token: "#{params[:token]}")
     if @user == []
-      redirect_to "/404"
+      redirect_to '/404'
     else
       user = User.find(@user.first.id)
       user.token = nil
@@ -109,7 +109,7 @@ class UsersController < ApplicationController
       if session[:kind] == 1
         logout
       end
-      redirect_to "/users/validated"
+      respond_with @user.first
     end
   end
 
