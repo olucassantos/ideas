@@ -21,7 +21,7 @@
     = f.date_select :age, start_year: 100.years.ago.year, end_year: 10.years.ago.year
   .field
     = f.label :about
-    = f.text_area :about
+    = f.text_area :about, class: 'redactor'
     = render 'shared/image_field', :f => f
   .actions
     = f.submit class: 'enter'

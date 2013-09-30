@@ -9,9 +9,6 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 200 }, format: {with: /^[a-zA-ZçÇà-úÀ-Ú ]+$/}
   validates :email, presence: true, uniqueness: true,length: {maximum: 200} , format: {with:/^[a-zA-Z0-9_.-]+@([a-zA-Z0-9_ -]+\.)+[a-zA-Z]{2,4}$/}
   validates :phone, format: {with: /^\(?\d{2}\)?[\s-]?\d{4}-?\d{4}$/}, allow_blank: true, allow_nil: true
-  validate  :about
-  validate  :age
-  validate  :tested
   validates :code, presence: true,format: {with: /^[a-zA-Z0-9çÇ]+$/}, length: {maximum: 15}, length: {minimum: 5}
   #relations
   has_many  :theories , dependent: :destroy
