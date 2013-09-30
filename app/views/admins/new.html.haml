@@ -1,7 +1,8 @@
-%center
-  Novo Administrador
-
-  = render 'form'
-
-  = link_to 'Voltar', admins_path, class:"linkButton"
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Bem vindo mestre!
+      %h2 Cadastrar outro administrador é algo de grande importância, apenas cadastre se você realmente confia nesta pessoa.
+    %p#notice= notice
+    .content
+      = render 'form'

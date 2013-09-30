@@ -236,6 +236,7 @@ pt-BR:
         tested: "Autenticação"
         age: "Idade"
         phone: "Telefone"
+        about: "Sobre"
        theory:
         title: "Título"
         description: "Descrição"
