@@ -21,10 +21,15 @@ group :assets do
   gem 'compass-rails'
 end
 
-group :test, :development do
+group :development do
+  gem 'sqlite3'
+end
+
+group :test do
   gem 'rspec-rails', '2.13.1'
   gem 'factory_girl_rails'
   gem 'capybara', '2.1.0'
   gem 'selenium-webdriver', '2.35.1'
   gem 'guard-rspec'
+  gem 'sqlite3'
 end
