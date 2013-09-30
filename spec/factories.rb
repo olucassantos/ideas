@@ -21,6 +21,7 @@ FactoryGirl.define do
   end
 
   factory :category do
+    id 6
     title 'Categoria'
   end
 

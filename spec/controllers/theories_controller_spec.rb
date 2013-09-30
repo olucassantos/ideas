@@ -6,6 +6,7 @@ describe TheoriesController do
     @admin = FactoryGirl.create(:admin)
     @user = FactoryGirl.create(:user)
     @theory = FactoryGirl.create(:theory)
+    FactoryGirl.create(:category)
   end
 
   describe 'adopt' do
@@ -57,7 +58,7 @@ describe TheoriesController do
       end
     end
 
-    context 'when is logged admin' do
+    context 'when is logged as admin' do
       it 'should redirect to index' do
         login_admin(@admin)
         get :abandon, id:@user
@@ -142,7 +143,7 @@ describe TheoriesController do
       it 'should redirect allow create' do
         login_admin(@admin)
         get :new, id:@theory
-        response.should redirect_to '/'
+        response.should be_success
       end
     end
 
@@ -171,24 +172,6 @@ describe TheoriesController do
           post :create, theory: {title: @theory.title, description: @theory.description, justification: @theory.justification, brief: @theory.brief, outlay: @theory.outlay, choice: @theory.choice,kind: @theory.kind, user_id: @theory.user_id, view: @theory.view}
         end
         response.should be_success
-      end
-    end
-
-      context 'when is invalid data for idea' do
-      it 'should not create a theory' do
-        login_user(@user)
-        @ntheory = Theory.new(@theory.attributes.except('id','created_at', 'updated_at'))
-        @ntheory.title = nil
-        @ntheory.description = 'Descição para a ideia, pode ter caracteres infinitos'
-        @ntheory.justification = 'Justificativa para a ideia, usada para atrair os usuarios para seus primordios de doação e adoção.'
-        @ntheory.brief = "Resumo, o texto que explica rapidamente o que significa a ideia."
-        @ntheory.outlay = nil
-        @ntheory.choice = nil
-        @ntheory.kind = nil
-        @ntheory.user_id = nil
-        @ntheory.view = 150
-        post :create, theory: {title: @theory.title, description: @theory.description, justification: @theory.justification, brief: @theory.brief, outlay: @theory.outlay, choice: @theory.choice,kind: @theory.kind, user_id: @theory.user_id, view: @theory.view}
-        response.should_not be_success
       end
     end
   end

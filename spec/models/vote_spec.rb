@@ -12,14 +12,14 @@ describe Vote do
     vote.should be_valid
    end
 
-   it 'should has a theory' do
-     vote = FactoryGirl.build(:vote, theory_id: nil)
-     vote.should_not be_valid
-   end
 
    it 'should accept a theory' do
      vote = FactoryGirl.build(:vote, theory_id: 1)
      vote.should be_valid
    end
 
+    it 'should accept a tip' do
+     vote = FactoryGirl.build(:vote, tip_id: 1)
+     vote.should be_valid
+   end
 end

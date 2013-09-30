@@ -12,7 +12,7 @@ describe 'AdminsController' do
       visit '/entrar'
       fill_in 'email', with: @admin.email
       fill_in 'code', with: '123456'
-      click_button 'Autenticar'
+      click_button 'Entrar'
     end
 
     it 'should enter page index of admin' do

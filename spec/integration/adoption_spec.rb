@@ -13,13 +13,13 @@ describe 'AdoptionsController' do
       visit '/entrar'
       fill_in 'email', with: @admin.email
       fill_in 'code', with: '123456'
-      click_button 'Autenticar'
+      click_button 'Entrar'
     end
 
     it 'should have a link to adoption' do
       visit '/'
       click_link ('Adoções')
-      expect(page).to have_text("Adoções")
+      current_path.should eql(adoptions_path)
     end
 
     it 'should have a link to show adoption' do
