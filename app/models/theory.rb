@@ -16,7 +16,6 @@ class Theory < ActiveRecord::Base
         has_many :votes,  dependent: :destroy
         has_many :favorites,  dependent: :destroy
         accepts_nested_attributes_for :categories, allow_destroy: true, reject_if: proc{|attrs| attrs['id'].blank?}
-  before_filter: category?
 
   def inc_view
     self.view = self.view ? self.view+1 : 0
