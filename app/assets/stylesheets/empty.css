@@ -13,4 +13,6 @@
 *= require theory_edit
 *= require user_form
 *= require user_profile
+*= require jquery.dataTables
+*= require table_index
 */

@@ -1,26 +1,28 @@
-%center
-  %h1 Lista de Administradores
+.tableArea
+  .data
+    %h1 Lista de Chefões
+    .adminPanel
+      .buttons
+        .button
+          = link_to 'Cadastrar Chefão', new_admin_path
+    %table.tables
+      %thead
+        %tr
+          %th Id
+          %th Nome
+          %th Email
+          %th Telefone
+          %th Idade
+          %th
+          %th
+      %tbody
+        - @admins.each do |admin|
+          %tr
+            %td= admin.id
+            %td= link_to "#{admin.name}", admin
+            %td= admin.email
+            %td= admin.phone
+            %td= admin.age
+            %td= link_to 'Editar', edit_admin_path(admin)
+            %td= link_to 'Apagar', admin, :method => :delete, :data => { :confirm => 'Tem certeza?' }
 
-  %table
-    %tr
-      %th Nome
-      %th Email
-      %th Telefone
-      %th Idade
-      %th
-      %th
-      %th
-
-    - @admins.each do |admin|
-      %tr
-        %td= link_to "#{admin.name}", admin
-        %td= admin.email
-        %td= admin.phone
-        %td= admin.age
-        %td= link_to 'Editar', edit_admin_path(admin)
-        %td= link_to 'Apagar', admin, :method => :delete, :data => { :confirm => 'Tem certeza?' }
-
-  %br
-  %h3
-    = link_to 'Cadastrar Novo Administrador', new_admin_path, class:"linkButton"
-.clear

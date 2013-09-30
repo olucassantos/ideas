@@ -1,20 +1,21 @@
-%center
-  %h1 Categorias
-
-  %table
-    %tr
-      %th Titulo
-      %th
-      %th
-      %th
-
-    - @categories.each do |category|
-      %tr
-        %td= link_to "#{category.title}", category
-        %td= link_to 'Editar', edit_category_path(category)
-        %td= link_to 'Apagar', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  %br
-  %h3
-    = link_to 'Nova Categoria', new_category_path
-.clear
+.tableArea
+  .data
+    %h1 Categorias
+    .adminPanel
+      .buttons
+        .button
+          = link_to 'Nova Categoria', new_category_path
+    %table.tables
+      %thead
+        %tr
+          %th Titulo
+          %th Ideias nesta categoria
+          %th
+          %th
+      %tbody
+        - @categories.each do |category|
+          %tr
+            %td= category.title
+            %td= category.theories.count
+            %td= link_to 'Editar', edit_category_path(category)
+            %td= link_to 'Apagar', category, :method => :delete, :data => { :confirm => 'Certeza?' }

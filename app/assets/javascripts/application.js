@@ -4,4 +4,5 @@
 //= require redactor-rails
 //= require fb-root
 //= require google
+//= require jquery.dataTables
 
