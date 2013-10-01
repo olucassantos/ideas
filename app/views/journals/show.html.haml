@@ -1,17 +1,12 @@
-%p#notice= notice
-
-%p
-  %b Adoção:
-  = @journal.adoption.theory.title
-  %br
-  %b
-    = @journal.description
-    %br
-  -if @journal.image
-    %img{width: "400", height: "300" ,src: "#{@journal.image.to_s}" }
-  -else
-    %img{width: "400", height: "300" ,src: "/assets/no-image-found.jpg" }
-
-= link_to 'Editar', edit_journal_path(@journal), class:"linkButton"
-=link_to 'Voltar', "/adoptions/#{@journal.adoption.id}/journal", class:"linkButton"
-.clear
+.tableArea
+  .data
+    %p#notice= notice
+    .greetings
+      %h1#journal= @journal.adoption.theory.title
+    .content
+      .image
+        -if @journal.image
+          %img{src: "#{@journal.image.to_s}" }
+        -else
+          %img{src: "/assets/no-image-found.jpg" }
+      .desc= raw @journal.description

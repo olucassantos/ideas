@@ -1,10 +1,14 @@
-%p#notice= notice
+.tableArea
+  .data#admin
+    %h1 Categoria
+    %p#notice= notice
 
-%p
-  %b Title:
-  = @category.title
+    %p Título:
+    %h2= @category.title
+    %p Ideias:
+    %h2= "#{@category.theories.count}, nesta categoria."
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
-.clear
+
+    = link_to 'Editar', edit_category_path(@category)
+    |
+    = link_to 'Voltar', adoptions_path

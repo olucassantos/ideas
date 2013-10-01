@@ -49,6 +49,7 @@
               -else
                 .image
                   %img#adopter{alt: "#{adoption.user.name}", src: "/assets/no-image-found.jpg"}
+
   -if @theory.user.id == session[:id] || session[:kind] == 2
     .adminPanel
       .buttons

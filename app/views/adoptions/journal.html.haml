@@ -1,25 +1,30 @@
-%h1
-  = "Diario de " + @adoption.user.name + ": " + @adoption.theory.title + "."
+.tableArea
+  .data
+    %h1= "Diario de " + @adoption.user.name + ": " + @adoption.theory.title + "."
+    - @journals.each do |journal|
+      .greetings#journal
+        %h1= journal.created_at.strftime("%d/%m/%Y")
+        .content
+          .image
+            -if journal.image
+              %img.JournalImage{src: "#{journal.image.to_s}"}
+            -else
+              %img.JournalImage{src: "/assets/no-image-found.png"}
+          .desc
+            %h2= truncate(journal.description, length: 500)
+        -if journal.adoption.user.id == session[:id] || session[:kind] == 2
+          .adminPanel
+            .buttons
+              .button
+                =link_to 'Editar', edit_journal_path(journal)
+              .button
+                =link_to 'Apagar', journal, :method => :delete, :data => { :confirm => 'Tem certeza?' }
 
-%center
-  - @journals.each do |journal|
-    .box
-      %h1= journal.created_at.strftime("%d %b. %Y")
-      %br
-      -if journal.image
-        %img.JournalImage{src: "#{journal.image.to_s}"}
-      -else
-        %img.JournalImage{src: "/assets/no-image-found.png"}
-      %br
-      %h2=journal.description
-      -if journal.adoption.user.id == session[:id] || session[:kind] == 2
-        =link_to 'Editar', edit_journal_path(journal), class:"linkButton"
-        =link_to 'Apagar', journal, :method => :delete, :data => { :confirm => 'Tem certeza?' }, class:"linkButton"
-
-  -if @journals.size < 1
-    %h1 Ainda não existem postagens, vamos lá crie uma !!!
-  %br
-  =link_to "+ Nota", "/journals/new/#{@adoption.id}", class: "linkButton"
-  =link_to "- Abandonar" , "/theories/#{@adoption.theory.id}/abandon", class: "linkButton", :data => { :confirm => 'Tem certeza?' }
-  =paginate @journals
-.clear
+      %center
+        -if @journals.size < 1
+          %h1 Ainda não existem postagens, vamos lá crie uma !!!
+        %br
+        =link_to "+ Nota", "/journals/new/#{@adoption.id}"
+        |
+        =link_to "- Abandonar" , "/theories/#{@adoption.theory.id}/abandon",  :data => { :confirm => 'Tem certeza?' }
+        =paginate @journals

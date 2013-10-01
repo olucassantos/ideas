@@ -1,22 +1,18 @@
-%p#notice= notice
+.tableArea
+  .data#admin
+    %p#notice= notice
 
-%p
-  %b Name:
-  = @admin.name
-%p
-  %b Email:
-  = @admin.email
-%p
-  %b Code:
-  = @admin.code
-%p
-  %b Phone:
-  = @admin.phone
-%p
-  %b Age:
-  = @admin.age
+    %p Nome:
+    %h2= @admin.name
+    %p Email:
+    %h2= @admin.email
+    %p Senha:
+    %h2= @admin.code
+    %p Telefone:
+    %h2= @admin.phone
+    %p Idade:
+    %h2= @admin.age
 
-= link_to 'Editar', edit_admin_path(@admin), class:"linkButton"
-\|
-= link_to 'Voltar', admins_path, class:"linkButton"
-.clear
+    = link_to 'Editar', edit_admin_path(@admin), class:"linkButton"
+    \|
+    = link_to 'Voltar', admins_path, class:"linkButton"

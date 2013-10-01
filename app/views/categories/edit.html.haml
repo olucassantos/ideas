@@ -1,6 +1,7 @@
-%h1 Editar Categorias
-= render 'form'
-= link_to 'Mostrar', @category
-|
-= link_to 'Voltar', categories_path
-.clear
+.userNew
+  .data
+    .greetings
+      %h2 Atualização de categoria!
+    %p#notice= notice
+    .content
+      = render 'form'
