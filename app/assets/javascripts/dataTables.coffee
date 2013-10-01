@@ -1,5 +1,5 @@
 $(document).ready ->
-  $(".tables").dataTable
+  $(".tables").dataTables
     bPaginate: true
     bLengthChange: true
     bFilter: true

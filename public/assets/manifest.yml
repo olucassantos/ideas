@@ -1,10 +1,26 @@
 ---
+Sorting icons.psd: Sorting icons.psd
+Sorting icons/index.psd: Sorting icons.psd
+back_disabled.png: back_disabled.png
+back_disabled/index.png: back_disabled.png
+back_enabled.png: back_enabled.png
+back_enabled/index.png: back_enabled.png
+back_enabled_hover.png: back_enabled_hover.png
+back_enabled_hover/index.png: back_enabled_hover.png
 calendar.png: calendar.png
 calendar/index.png: calendar.png
 category.png: category.png
 category/index.png: category.png
 direita.gif: direita.gif
 direita/index.gif: direita.gif
+favicon.ico: favicon.ico
+favicon/index.ico: favicon.ico
+forward_disabled.png: forward_disabled.png
+forward_disabled/index.png: forward_disabled.png
+forward_enabled.png: forward_enabled.png
+forward_enabled/index.png: forward_enabled.png
+forward_enabled_hover.png: forward_enabled_hover.png
+forward_enabled_hover/index.png: forward_enabled_hover.png
 ideas.png: ideas.png
 ideas/index.png: ideas.png
 ideas2.png: ideas2.png
@@ -13,6 +29,16 @@ ideas3.png: ideas3.png
 ideas3/index.png: ideas3.png
 no-image-found.jpg: no-image-found.jpg
 no-image-found/index.jpg: no-image-found.jpg
+sort_asc.png: sort_asc.png
+sort_asc/index.png: sort_asc.png
+sort_asc_disabled.png: sort_asc_disabled.png
+sort_asc_disabled/index.png: sort_asc_disabled.png
+sort_both.png: sort_both.png
+sort_both/index.png: sort_both.png
+sort_desc.png: sort_desc.png
+sort_desc/index.png: sort_desc.png
+sort_desc_disabled.png: sort_desc_disabled.png
+sort_desc_disabled/index.png: sort_desc_disabled.png
 views.png: views.png
 views/index.png: views.png
 application.js: application.js
