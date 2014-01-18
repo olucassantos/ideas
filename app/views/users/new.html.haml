@@ -1,6 +1,10 @@
-%div{:align => "center"}
-  %h1 Bem Vindo!
-  %h2 Preencha, os campos abaixo, você recebera um e-mail para confirmar seu cadastro.
-  %p#notice= notice
-  = render 'form'
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Bem Vindo!
+      %h2 Faça seu cadastro e compartilhe Ideas!
+    %p#notice= notice
+    .content
+      = render 'form'
+    .greetings
+      %h3 Você recebera um e-mail para confirmar seu cadastro. Leia-o com atenção!

@@ -1,6 +1,7 @@
-%h1 Editar Adoção
-= render 'form'
-= link_to 'Mostar', @adoption, class:"linkButton"
-|
-= link_to 'Voltar', adoptions_path, class:"linkButton"
-.clear
+.userNew
+  .data
+    .greetings
+      %h2 Atualização de adoção!
+    %p#notice= notice
+    .content
+      = render 'form'

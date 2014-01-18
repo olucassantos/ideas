@@ -7,52 +7,6 @@ class TheoriesController < ApplicationController
   before_filter :tested_adoption?, only: [:adopt]
   before_filter :tested_abandon?, only: [:abandon]
 
-  def user_find
-    User.find(session[:id])
-  end
-
-  def adopt
-    @theory = Theory.find( params[:id] ) rescue nil
-      if !@theory
-        redirect_to "/404"
-        return
-      end
-
-      if @theory.choice == true
-        if @theory.adopted_by?(session[:id]).size>0
-          flash[:notice] = "Opa! Você já adotou esta ideia!"
-          redirect_to "/users/#{session[:id]}"
-          return
-        end
-
-        Adoption.create(theory_id: @theory.id,user_id: session[:id])
-        redirect_to "/theories/adopted"
-      else
-        flash[:notice] = "Desculpe, mas o dono da ideia, deseja deixa-la privada."
-        redirect_to user_path(session[:id])
-      end
-  end
-
-  def abandon
-    @theory = Theory.find( params[:id] ) rescue nil
-    if !@theory
-      redirect_to "/404"
-      return
-    end
-
-    @adoption = @theory.adopted_by?(session[:id])
-    if @adoption.size<1
-      flash[:notice] = "Opa! você não adotou esta ideia!"
-      redirect_to "/users/#{session[:id]}"
-      return
-    end
-
-    @adoption.first.journals.delete_all if @adoption.first.journals
-    @adoption.first.destroy
-    flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
-    redirect_to "/theories"
-  end
-
   def index
     @theories = Theory.all
     @categories = Category.all
@@ -71,17 +25,12 @@ class TheoriesController < ApplicationController
   end
 
   def new
-      if admin_session?
-        flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
-        redirect_to "/"
-      return
-    end
-
     if session[:tested] || admin_session?
       @theory = Theory.new
+      @users = User.find(:all)
       respond_with @theory
     else
-      flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
+      flash[:notice] = "Você se cadastrou mas ainda não confirmou seu cadastro."
       redirect_to "/users/#{session[:id]}"
     end
   end
@@ -103,14 +52,21 @@ class TheoriesController < ApplicationController
 
   def create
    if admin_session?
-      flash[:notice] = "Porque diabos um administrador iria criar uma ideia para um usuario?"
-      redirect_to "/"
+      @theory = Theory.new(params[:theory])
+      flash[:notice] = "Ideia criada com sucesso!" if @theory.save
+      respond_with @theory
       return
     end
 
    if session[:tested] && !admin_session?
-      @theory = user_find.theories.new(params[:theory])
+      @theory = current_user.theories.new(params[:theory])
       flash[:notice] = "Ideia criada com sucesso!" if @theory.save
+
+      if !@theory.categories.first
+        @theory.category_ids = Category.find(6).id
+        @theory.save
+      end
+
       respond_with @theory
     else
       flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
@@ -127,6 +83,11 @@ class TheoriesController < ApplicationController
         params[:theory][:category_ids] ||= []
         @theory = Theory.find(params[:id])
         flash[:notice] = "Dados da ideia atualizados com sucesso." if @theory.update_attributes(params[:theory])
+        if !@theory.categories.first
+          @theory.category_ids = Category.find(6).id
+          @theory.save
+        end
+
         respond_with @theory
       else
          flash[:notice] = "Você esta cadastrado mas ainda não esta confirmado."
@@ -144,6 +105,53 @@ class TheoriesController < ApplicationController
       redirect_to "/theories"
     end
   end
+
+  def search
+    @search = params[:search]
+    @theories = Theory.search params[:search]
+  end
+
+  def adopt
+    @theory = Theory.find( params[:id] ) rescue nil
+      if !@theory
+        redirect_to "/404"
+        return
+      end
+
+      if @theory.choice == true || @theory.user == current_user
+        if @theory.adopted_by?(session[:id]).size>0
+          flash[:notice] = "Opa! Você já adotou esta ideia!"
+          redirect_to "/users/#{session[:id]}"
+          return
+        end
+
+        Adoption.create(theory_id: @theory.id,user_id: session[:id])
+        redirect_to "/theories/adopted"
+      else
+        flash[:notice] = "Desculpe, mas o dono da ideia, deseja deixa-la privada."
+        redirect_to user_path(session[:id])
+      end
+  end
+
+def abandon
+    @theory = Theory.find( params[:id] ) rescue nil
+    if !@theory
+      redirect_to "/404"
+      return
+    end
+
+    @adoption = @theory.adopted_by?(session[:id])
+    if @adoption.size<1
+      flash[:notice] = "Opa! você não adotou esta ideia!"
+      redirect_to "/users/#{session[:id]}"
+      return
+    end
+
+    @adoption.first.journals.delete_all if @adoption.first.journals
+    @adoption.first.destroy
+    flash[:notice] = "Ficamos tristes quando alguem desiste, obrigado por tentar !"
+    redirect_to "/theories"
+end
 
   private
   def tested?

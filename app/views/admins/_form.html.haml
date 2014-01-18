@@ -1,27 +1,23 @@
 = form_for @admin do |f|
   - if @admin.errors.any?
     #error_explanation
-      %h2 Os erros abaixo impediram a criação de adimistrador:
-      %ul
-        - @admin.errors.full_messages.each do |msg|
-          %li= msg
+      - @admin.errors.full_messages.each do |msg|
+        #erros= msg
 
   .field
-    Nome:
+    = f.label :name
     = f.text_field :name
   .field
-    Email:
-    = f.text_field :email
+    = f.label :email
+    = f.email_field :email
   .field
-    Senha:
+    = f.label :code
     = f.password_field :plain_code
   .field
-    Telefone:
-    = f.text_field :phone
+    = f.label :phone
+    = f.telephone_field :phone
   .field
-    Idade:
-    = f.date_select :age, start_year: 90.years.ago.year, end_year: 10.years.ago.year
+    %p= "Data de nasc."
+    = f.date_select :age, start_year: 100.years.ago.year, end_year: 10.years.ago.year
   .actions
-    = f.submit 'Criar', class:"linkButton"
-    %br
-    %br
+    = f.submit class: 'enter'

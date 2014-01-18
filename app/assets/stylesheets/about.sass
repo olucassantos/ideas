@@ -1,0 +1,49 @@
+@import compass
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.about
+  margin-top: 100px
+  & .content#about
+    width: 980px
+    margin: 0 auto
+    text-align: center
+  h1#end
+    font-size: 33px
+    color: $shadowColor
+    font-weight: bold
+  h1#title
+    font-weight: bold
+    font-size: 30px
+    color: $shadowColor
+  .question
+    background-color: $lightColor
+    text-align: center
+    border-radius: 4px
+    padding: 1px 1px 1px 1px
+    margin-bottom: 10px
+    h2
+      font-weight: bold
+      font-size: 25px
+      color: $shadowColor
+    p
+      font-size: 20px
+      color: $shadowColor
+      & a
+        text-decoration: none
+        font-size: 19px
+        background: $shadowColor
+        color: $ultralColor
+        border-radius: 2px
+        transition: all 0.3s
+        &:hover
+          transition: all 0.3s
+          background: $neutralColor
+          color: $shadowColor
+
+
+

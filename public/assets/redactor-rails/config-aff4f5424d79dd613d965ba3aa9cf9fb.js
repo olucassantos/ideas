@@ -1,0 +1,1 @@
+$(document).ready(function(){var e,t=$("meta[name=csrf-token]").attr("content"),n=$("meta[name=csrf-param]").attr("content");void 0!==n&&void 0!==t&&(e=n+"="+encodeURIComponent(t)),$(".redactor").redactor({path:"/assets/redactor-rails",css:"style.css"})});

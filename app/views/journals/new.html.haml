@@ -1,5 +1,12 @@
-%h1 Novo Diario
-
-= render 'form'
-
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Novo dia.
+      %h2 Crie um dia no diario desta ideia.
+      %h2 Expresse o que você fez, métodos utilizados, enfim.
+      %h1 Querido diario...
+    %p#notice= notice
+    .content
+      = render 'form'
+    .greetings
+      %h2 Não deixe de colocar uma Foto !!!

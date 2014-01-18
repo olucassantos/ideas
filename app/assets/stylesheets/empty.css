@@ -1,5 +1,18 @@
 /*
 *= require redactor-rails
 *= require index
-*= require home
+*= require model
+*= require search
+*= require login
+*= require theory_form
+*= require new_theory
+*= require footer
+*= require theory_index
+*= require about
+*= require theory_show
+*= require theory_edit
+*= require user_form
+*= require user_profile
+*= require jquery.dataTables
+*= require table_index
 */

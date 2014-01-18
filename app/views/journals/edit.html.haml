@@ -1,8 +1,11 @@
-%h1 Editing journal
-
-= render 'form'
-
-= link_to 'Show', @journal
-\|
-= link_to 'Back', journals_path
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Editando diario.
+      %h2 Errou alguma coisa?
+      %h1 Querido diario...
+    %p#notice= notice
+    .content
+      = render 'form'
+    .greetings
+      %h2 Não deixe de colocar uma Foto !!!

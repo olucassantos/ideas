@@ -1,6 +1,7 @@
-%h1 Nova Categoria
-
-= render 'form'
-
-= link_to 'Voltar', categories_path
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Nova Categoria
+    %p#notice= notice
+    .content
+      = render 'form'

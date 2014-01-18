@@ -21,12 +21,19 @@ FactoryGirl.define do
   end
 
   factory :category do
+    id 6
     title 'Categoria'
   end
 
   factory :journal do
     description 'Teste usado para testar os journals nas factories com 50 caracteres'
     adoption
+  end
+
+  factory :vote do
+    point true
+    user_id 1
+    theory_id 2
   end
 
   factory :theory do
@@ -37,6 +44,15 @@ FactoryGirl.define do
     outlay 62500
     choice true
     kind true
+    user_id 1
+    view 150
+  end
+
+  factory :tip do
+    title 'Planetariun'
+    description 'Descição para a ideia, pode ter caracteres infinitos'
+    brief 'Resumo, o texto que explica rapidamente o que significa a ideia.'
+    tags 'plantas, cheiro, doces'
     user_id 1
     view 150
   end

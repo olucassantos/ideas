@@ -1,35 +1,27 @@
 = form_for(@user, :html =>{:multipart => true}) do |f|
   - if @user.errors.any?
     #error_explanation
-      %h2 Algo impediu que fosse salvo este usuário:
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
+      - @user.errors.full_messages.each do |msg|
+        #erros= msg
 
   .field
     = f.label :name
-    %br/
     = f.text_field :name
   .field
     = f.label :email
-    %br/
     = f.email_field :email
   .field
     = f.label :code
-    %br/
     = f.password_field :plain_code
   .field
     = f.label :phone
-    %br/
     = f.telephone_field :phone
   .field
-    = "Data de nasc."
-    %br/
+    %p= "Data de nasc."
     = f.date_select :age, start_year: 100.years.ago.year, end_year: 10.years.ago.year
   .field
     = f.label :about
-    %br/
-    = f.text_area :about
+    = f.text_area :about, class: 'redactor'
     = render 'shared/image_field', :f => f
   .actions
-    = f.submit
+    = f.submit class: 'enter'

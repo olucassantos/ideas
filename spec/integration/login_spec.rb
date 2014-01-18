@@ -13,14 +13,14 @@ describe 'Login' do
       visit '/entrar'
       fill_in 'email', with: @user.email
       fill_in 'code', with: @user.code
-      click_button 'Autenticar'
+      click_button 'Entrar'
     end
 
     it 'should not login with email and code blank' do
       visit '/entrar'
       fill_in 'email', with: ''
       fill_in 'code', with: ''
-      click_button 'Autenticar'
+      click_button 'Entrar'
       expect(page).to have_text("Informe email e senha")
     end
 
@@ -28,7 +28,7 @@ describe 'Login' do
       visit '/entrar'
       fill_in 'email', with: @user.email
       fill_in 'code', with: ''
-      click_button 'Autenticar'
+      click_button 'Entrar'
       expect(page).to have_text("Informe a senha")
     end
 
@@ -36,7 +36,7 @@ describe 'Login' do
         visit '/entrar'
         fill_in 'email', with: ''
         fill_in 'code', with: @user.code
-        click_button 'Autenticar'
+        click_button 'Entrar'
         expect(page).to have_text("Informe o email")
     end
 
@@ -44,7 +44,7 @@ describe 'Login' do
       visit '/entrar'
       fill_in 'email' , with: 'o.lucasug@jua.com'
       fill_in 'code', with: 'aiasd'
-      click_button 'Autenticar'
+      click_button 'Entrar'
       expect(page).to have_text("Não foi possivel validar seu login.")
     end
 
@@ -52,16 +52,16 @@ describe 'Login' do
       visit '/entrar'
       fill_in 'email', with: @user.email
       fill_in 'code', with: '123456'
-      click_button 'Autenticar'
-      expect(page).to have_text("Logado como: #{@user.name} ")
+      click_button 'Entrar'
+      current_path.should eql(root_path)
     end
 
     it 'should login as admin when are right and go to index' do
       visit '/entrar'
       fill_in 'email', with: @admin.email
       fill_in 'code', with: '123456'
-      click_button 'Autenticar'
-      expect(page).to have_text("Logado como: #{@admin.name} ")
+      click_button 'Entrar'
+      current_path.should eql(root_path)
     end
 
   end
@@ -73,7 +73,7 @@ describe 'Login' do
       visit '/entrar'
       fill_in 'email', with: @user.email
       fill_in 'code', with: '123456'
-      click_button 'Autenticar'
+      click_button 'Entrar'
     end
 
 

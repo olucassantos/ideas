@@ -1,0 +1,24 @@
+%p#notice= notice
+#content
+  %h1 Ideias para mudar o mundo!
+  -if session[:kind] == 2
+    .adminPanel
+      .buttons
+        .button
+          =link_to "+Dica!", new_tip_path, class: "navlinks"
+  %p Aqui você econtra as mais variadas dicas, que podem lhe ajudar no dia-a-dia.
+  .boxes
+    -@tips.each do |tip|
+      .box
+        %h1= link_to truncate(tip.title, length: 15, separator:' ').humanize , tip if tip
+        .imageTheory
+          -if tip.image
+            %img.logo{src: "#{tip.image.to_s}"}
+          -else
+            %img{alt: "#{tip.title}", src: "/assets/no-image-found.jpg"}
+        .dataTheory
+          %p#author= link_to "Por: #{truncate(tip.user.name, length: 20, separator:' ').titleize}", "/users/#{tip.user.id}" if tip
+          %p#views
+            %span
+              %img{src: "/assets/category.png"}
+              = tip.view

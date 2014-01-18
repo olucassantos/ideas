@@ -1,0 +1,9 @@
+-if @theory.errors.any?
+  #error_explanation
+    %h2
+      = "Algo não me deixou salvar esta ideia."
+      %br
+      = "Não esqueça de colocar a imagen Novamente."
+    %ul
+      - @theory.errors.full_messages.each do |msg|
+        #erros= msg

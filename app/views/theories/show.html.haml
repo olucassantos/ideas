@@ -1,61 +1,71 @@
 %p#notice= notice
-.masterBox
-  .headerBox
-    %img.logoTheory{:src => "#{@theory.image.to_s}"}
-    .titleBox
-      .Title
-        = @theory.title
-      .Name
-        Por:
-        = @theory.user.name
-      .Brief
-        = @theory.brief
-      .Adoption
-        -if @theory.choice == true
-          =link_to "Adote esta Ideia !", adopt_theory_path(@theory), class: "linkButton"
-  %center
-    .Content
+.masterBox{'data-id' => @theory.id}
+  .data
+    .presentation
+      .content#presentation
+        .image
+          .logoTheory
+            %img{:src => "#{@theory.image.to_s}"}
+          .votes
+            .vote#up
+              #count
+                .point= @theory.votes.where(point: true).count
+            .vote#down
+              #count
+                .point= @theory.votes.where(point: false).count
+          .favorite
+            = render 'theories/favorites'
+          .donation
+            -if @theory.kind
+              =render 'doar'
+        .brief
+          %p#title= @theory.title
+          %p#author
+            Por:
+            =link_to @theory.user.name, @theory.user
+          %p#brief= @theory.brief
+          %p#adopte=link_to "ADOTE ESTA IDEIA!", adopt_theory_path(@theory) if @theory.choice?
+    .content
       %p
-        .Sub
-          O que é?
-          %br
-        .Text
-          = raw @theory.description
+        %h2 O que é?
+        = raw @theory.description
       %p
-        .Sub
-          E porque precisamos?
-          %br
-        .Text
-          = raw @theory.justification
+        %h2 E porque precisamos?
+        = raw @theory.justification
       %p
-        .Sub
-          Quanto isso vai custar?
-        .Value
-          ="R$ " + @theory.outlay.to_s
+        %h2 Quanto isso vai custar?
+        %h1=number_to_currency(@theory.outlay, unit: "R$")
+  -if @theory.adoptions.first
+    .adoptions
       %p
-        -if @theory.choice == true
-          %h2 Ideia pública
-        -else
-          %h2 Idea privada.
-      %p
-        -if @theory.kind == true
-          %h2 Esperando alguém desenvolver !
-        -else
-          %h2 Esperando alguém me financiar !
-    .ContentAdoptions
-      %p
-        -if @theory.kind == true
-          =render 'doar'
         %h2 Usuarios que adotaram:
-      -if @theory.adoptions.first
+      .users
         -@theory.adoptions.each do |adoption|
-          =link_to "#{adoption.user.name}", "/users/#{adoption.user.id}", class: "nameTheory"
-      -else
-        %h2 Por enquanto ninguém adotou esta Ideia!
-.clear
+          .user
+            %a{href: "/users/#{adoption.user.id}"}
+              -if adoption.user.image
+                .image
+                  %img#adopter{alt: "#{adoption.user.name}", src: "#{adoption.user.image.to_s}"}
+              -else
+                .image
+                  %img#adopter{alt: "#{adoption.user.name}", src: "/assets/no-image-found.jpg"}
+
   -if @theory.user.id == session[:id] || session[:kind] == 2
-    =link_to 'Atualizar dados', edit_theory_path(@theory), class: "linkButton"
-    |
-    = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }, class: "linkButton"
-    |
-  =link_to 'Voltar', theories_path, class: "linkButton"
+    .adminPanel
+      .buttons
+        .button
+          = link_to 'Atualizar dados', edit_theory_path(@theory)
+        .button
+          = link_to 'Apagar', @theory, method: :delete, data: { confirm: 'Are you sure?' }
+  .socialPlugins
+    .links
+      .like=render 'theories/like'
+      .google=render 'theories/googleplus'
+      .reddit=render 'theories/reddit'
+      .twitter=render 'theories/twitter'
+      .facebook=render 'theories/facebook'
+
+= content_for :javascript do
+  :javascript
+    new Votes()
+    new Favorite()

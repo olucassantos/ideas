@@ -1,0 +1,83 @@
+@import compass
+
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.tableArea
+  margin-top: 100px
+  & h1#journal
+    text-align: center
+    color: $shadowColor
+    text-shadow: -1px -1px 1px #000
+    font-size: 40px
+  & .data#admin
+    width: 600px
+    text-align: center
+    & p
+      color: $highColor
+      font-size: 20px
+      font-weight: bold
+    & h2
+      color: $shadowColor
+      font-size: 23px
+      font-weight: normal
+      font-variant: small-caps
+  & .data
+    width: 980px
+    margin: 0 auto
+    & .content
+      & .image
+        margin: 0 auto
+        background-color: $highColor
+        width: 410px
+        height: 310px
+        text-align: center
+        & img
+          width: 400px
+          height: 300px
+          margin-top: 5px
+  & h1
+    text-align: center
+    color: $shadowColor
+    text-shadow: -1px -1px 1px #000
+  & a
+    text-decoration: none
+    color: $shadowColor
+    font-weight: bold
+    &:hover
+      color: $highColor
+      transition: all 0.6s
+.adminPanel
+  +clearfix
+  text-align: center
+  width: 980px
+  margin: 0 auto
+  background-color: #CD5C5C
+  margin-top: 20px
+  margin-bottom: 20px
+  padding-bottom: 10px
+  border-radius: 16px
+  box-shadow: -3px -3px 20px #000
+  & .buttons
+    margin: 0 auto
+    width: 240px
+    +clearfix
+    & .button
+      background-color: $ultralColor
+      width: 200px
+      float: left
+      margin-left: 20px
+      margin-top: 10px
+      border-radius: 6px
+      & a
+        text-decoration: none
+        color: $shadowColor
+        text-shadow: -1px -1px 1px #000
+        font-size: 20px
+        &:hover
+          transition: all 0.6s
+          color: $highColor

@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require jqFancyTransitions
-//= require zoomer
 //= require redactor-rails
+//= require fb-root
+//= require google
+//= require jquery.dataTables
+

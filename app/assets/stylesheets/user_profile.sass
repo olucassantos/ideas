@@ -1,0 +1,95 @@
+@import compass
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.headerUser
+  width: 550px
+  margin: 0 auto
+  +clearfix
+  & .image
+    float: left
+    background-color: $shadowColor
+    width: 210px
+    height: 160px
+    text-align: center
+    border-radius: 6px
+    & a
+      color: #000
+      font-weight: bold
+      text-decoration: none
+    & img
+      width: 200px
+      height: 150px
+      margin-top: 5px
+  & .basics
+    float: left
+    margin-left: 40px
+    & h1
+      color: $shadowColor
+      text-align: center
+      font-size: 30px
+      text-shadow: -1px -1px 1px #000
+      font-variant: small-caps
+      margin-bottom: 0
+    & h2
+      color: $shadowColor
+      text-align: center
+      font-size: 15px
+      margin: 0
+      font-style: italic
+.about
+  +clearfix
+  width: 550px
+  margin: 0 auto
+  margin-top: 20px
+  & h1
+    color: $shadowColor
+    text-align: center
+    font-size: 30px
+    text-shadow: -1px -1px 1px #000
+    font-variant: small-caps
+    margin-bottom: 0
+.favorites#owner
+  background-color: $ultralColor
+.favorites#adoptions
+  background-color: #FFDEAD
+  & a
+    color: $ultralColor
+    font-weight: bold
+    text-decoration: none
+  & .image
+    height: 92px
+.favorites
+  background-color: $lightColor
+  padding-bottom: 20px
+  width: 550px
+  border-radius: 16px
+  margin: 0 auto
+  & h1
+    color: $shadowColor
+    text-align: center
+    font-size: 30px
+    text-shadow: -1px -1px 1px #000
+    font-variant: small-caps
+    margin-bottom: 0
+  & .boxes
+    +clearfix
+    width: 550px
+    margin: 0 auto
+    & .box
+      margin-left: 10px
+      float: left
+      & .image
+        background-color: $shadowColor
+        width: 70px
+        height: 70px
+        text-align: center
+        border-radius: 6px
+        & img
+          margin-top: 5px
+          width: 60px
+          height: 60px

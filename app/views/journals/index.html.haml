@@ -1,23 +1,23 @@
-%h1 Diarios
+.tableArea
+  .data
+    %h1 Diarios
 
-%table
-  %tr
-    %th Foto
-    %th Adoção
-    %th Descrição
-    %th
-    %th
-    %th
-
-  - @journals.each do |journal|
-    %tr
-      %td
-        %img{width: "47", height: "50" ,src: "#{journal.image.to_s}" }
-      %td= journal.adoption_id
-      %td= journal.description
-      %td= link_to 'Mostrar', journal
-      %td= link_to 'Editar', edit_journal_path(journal)
-      %td= link_to 'Apagar', journal, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-.clear
+    %table.tables
+      %thead
+        %tr
+          %th Adoção
+          %th Foto
+          %th Descrição
+          %th
+          %th
+          %th
+      %tbody
+        - @journals.each do |journal|
+          %tr
+            %td= journal.adoption_id
+            %td
+              %img{width: "47", height: "50" ,src: "#{journal.image.to_s}" }
+            %td= truncate(journal.description, lenght: 60)
+            %td= link_to 'Mostrar', journal
+            %td= link_to 'Editar', edit_journal_path(journal)
+            %td= link_to 'Apagar', journal, :method => :delete, :data => { :confirm => 'Certeza?' }

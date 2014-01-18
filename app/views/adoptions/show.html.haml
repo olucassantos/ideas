@@ -1,16 +1,14 @@
-%p#notice= notice
-%h1 Adoção
-%p
-  %b Theory:
-  = @adoption.theory_id
-%p
-  %b User:
-  = @adoption.user_id
-%p
-  %b Rating:
-  = @adoption.rating
+.tableArea
+  .data#admin
+    %h1 Adoção
+    %p#notice= notice
 
-= link_to 'Edit', edit_adoption_path(@adoption)
-\|
-= link_to 'Back', adoptions_path
-.clear
+    %p Theory:
+    %h2= "#{@adoption.theory_id}, #{@adoption.theory.title}"
+
+    %p User:
+    %h2= "#{@adoption.user_id}, #{@adoption.user.name}"
+
+    = link_to 'Editar', edit_adoption_path(@adoption)
+    |
+    = link_to 'Voltar', adoptions_path

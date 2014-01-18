@@ -1,91 +1,165 @@
+@import compass
 //Color Schema
 $highColor: #046380
 $lightColor: #e6e2af
 $ultralColor: #efecca
 $shadowColor: #33332d
-$neultralColor: #fff8e3
+$neutralColor: #fff8e3
 
 body
-  font-family: "Trebuchet MS" ,"Verdana" ,"Arial" ,"Helvetica" ,"sans-serif"
-
-header
-  background-color: $highColor
-  background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.3))
-  position: fixed
-  top: 0px
-  right: 0px
-  width: 100%
-  box-shadow: 0px 1px 4px $shadowColor
-  height: 65px
-  z-index: 999
-  & container#header
-    max-width: 980px
-    height: 60px
-    display: block
-    margin: 0 auto
-    & .logo
-      width: 185px
-      height: 65px
-      float: left
-      margin-top: 5px
-      & img
+  background-color: $neutralColor
+  .aboutHeader
+    background-color: $ultralColor
+    width: 101%
+    height: 650px
+    margin-left: -8px
+    margin-right: -8px
+    text-align: center
+    margin-top: 2px
+    box-shadow: 1px 4px 2px $ultralColor
+    .content
+      width: 1164px
+      height: 2600px
+      margin: 0 auto
+      padding-top: 100px
+      +clearfix
+      & p#notice
+        font-size: 25px
+        color: #CD5C5C
+        font-weight: bold
+        font-variant: small-caps
+      & .video
+        height: 328px
+        width: 572px
+        margin-right: 30px
+        position: relative
+        text-align: center
+        background-color: $shadowColor
+        border-radius: 3px
+        float: left
+        & iframe
+          margin-top: 8px
+          width: 555px
+          height: 313px
+      & .text
+        float: left
+        position: relative
+        width: 555px
+        height: 327px
+        background-color: $shadowColor
+        color: $ultralColor
+        border-radius: 8px
+        & h2
+          font-size: 20px
+        & h3
+          font-size: 19px
+        & li
+          font-size: 18px
+      & img#about
         width: 180px
-    nav
-      max-width: 690px 
-      float: left
-      & a.navlinks
-        border-radius: 4px
-        color: $ultralColor
-        padding-top: 20px
-        font-weight: bold
-        text-align: center
-        font-size: 16px
-        text-decoration: none
-        text-shadow: 1px 1px 1px $shadowColor
-        width: 80px
-        height: 45px
-        display: inline-block
-        line-height: 20px
-        &:hover
-          background-color: $shadowColor
-          transition: all 0.4s
-        &:active
+      .attentionStart
+        & a.link
+          +clearfix
+          position: relative
+          top: 50px
+          height: 100px
+          text-align: center
+          background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
+          background-color: $highColor
+          border-radius: 4px
+          color: $ultralColor
+          font-weight: bold
+          font-size: 30px
+          text-decoration: none
+          width: 600px
+          height: 70px
+          display: block
+          line-height: 70px
+          margin: 0 auto
+      .boxes#lasts
+        margin-bottom: 30px
+      .boxes
+        position: relative
+        top: 127px
+        +clearfix
+        h1#tops
+          color: $shadowColor
+          font-size: 35px
+          height: 70px
+        .box#tips
+          background-color: #F0FFF0
+          box-shadow: -1px -1px 2px green
+          margin-left: 1px
+        .box
+          box-shadow: -1px -1px 2px Gold
           background-color: $ultralColor
-      & a#logout
-        border-radius: 4px
-        color: $ultralColor
-        padding-top: 20px
-        font-weight: bold
-        text-align: center
-        font-size: 16px
-        text-decoration: none
-        text-shadow: 1px 1px 1px $shadowColor
-        width: 80px
-        height: 45px
-        display: inline-block
-        line-height: 20px
-        &:hover
-          background-color: #DF7D60
-        &:active
-          background-color: $ultralColor
-  & .search
-    width: 200px
-    float: left
-    & input
-      width: 200px
-      font-size: 33px
-      font-family: "trebuchet"
-      background-color: $ultralColor
-      border: none
-      border-radius: 4px
-      box-shadow: 2px 2px 4px $shadowColor
-      margin-top: 10px
-      transition: width 1s
-      color: $shadowColor
-      padding-left: 10px
-      margin-left: 10px
-      &:focus
-        transition: width 2s
-        border: 1px solid $shadowColor
-        background-color: lighten(($ultralColor),10)
-        width: 400px
+          border-radius: 10px
+          float: left
+          height: 535px
+          margin-right: 9px
+          margin-left: 1px
+          width: 222px
+          word-wrap: break-word
+          & h1
+            height: 28px
+            margin-top: 10px
+            margin-bottom: 10px
+            line-height: 24px
+            & a
+              color: $shadowColor
+              font-size: 24px
+              font-weight: bold
+              text-shadow: 1px 1px 1px #000
+              text-decoration: none
+          & h2
+            color: $shadowColor
+            font-size: 18px
+            margin-top: 5px
+            margin-bottom: 5px
+          p#brief
+            font-size: 15px
+            padding: 0 13px 0 13px
+            text-align: center
+            margin-top: 5px
+            margin-bottom: 5px
+            height: 220px
+            max-height: 220px
+          p#author
+            font-size: 12px
+            font-style: italic
+            margin: 0 auto
+            text-align: left
+            padding-left: 6px
+            & a
+              color: $shadowColor
+              text-decoration: none
+          p#views
+            font-size: 25px
+            max-width: 255px
+            margin: 0 auto
+            width: 222px
+            background-color: Gold
+            border-bottom-right-radius: 10px
+            border-bottom-left-radius: 10px
+          p#views.tips
+            background-color: green
+          & span#date img
+            height: 20px
+            width: 20px
+
+          & .imageTheory
+            background: $shadowColor
+            border-radius: 4px
+            display: block
+            margin: 0 auto
+            margin-top: 10px
+            padding-top: 5px
+            width: 209px
+            height: 173px
+            & img
+              height: 168px
+              width: 199px
+
+
+
+

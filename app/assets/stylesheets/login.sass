@@ -1,0 +1,54 @@
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.loginArea
+  border: 10px solid $shadowColor
+  border-radius: 10px
+  margin: 0 auto
+  text-align: center
+  margin-top: 100px
+  width: 980px
+  & h1
+    color: $shadowColor
+    font-size: 30px
+  & h2
+    color: $shadowColor
+    font-size: 26px
+  & p
+    color: $shadowColor
+    text-align: center
+    font-size: 18px
+  & .inputs
+    height: 200px
+    margin: 0 auto
+    width: 500px
+  & input#field
+    background-color: $ultralColor
+    border: none
+    border-radius: 4px
+    box-shadow: 2px 2px 4px $shadowColor
+    color: $shadowColor
+    font-size: 20px
+    line-height: 39px
+    margin-left: 10px
+    margin-top: 10px
+    padding-left: 10px
+    transition: width 0.3s
+    width: 300px
+    &:focus
+      border: 1px solid $shadowColor
+      background-color: lighten(($ultralColor),10)
+      transition: width 0.3s
+      width: 400px
+  & input.enter
+    background-color: $shadowColor
+    border: none
+    border-radius: 4px
+    color: $ultralColor
+    font-size: 20px
+    font-weight: bold
+    height: 40px
+    width: 150px

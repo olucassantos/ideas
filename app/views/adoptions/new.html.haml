@@ -1,6 +1,7 @@
-%h1 Nova Adoção
-
-= render 'form'
-
-= link_to 'Voltar', adoptions_path
-.clear
+.userNew
+  .data
+    .greetings
+      %h1 Nova Adoção
+    %p#notice= notice
+    .content
+      = render 'form'

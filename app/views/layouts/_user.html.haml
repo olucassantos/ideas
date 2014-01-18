@@ -1,5 +1,6 @@
-=link_to "Home", "/", class: "navlinks"
 =link_to "Perfil", User.find(session[:id]), class: "navlinks"
-=link_to "Pense!", new_theory_path, class: "navlinks"
+=link_to "+Idea!", new_theory_path, class: "navlinks"
+=link_to "+Dica!", new_tip_path, class: "navlinks"
 =link_to "Ideias", theories_path, class: "navlinks"
+=link_to "Dicas", tips_path, class: "navlinks"
 =link_to "Sair", "/sair", id: "logout", class: "navlinks"

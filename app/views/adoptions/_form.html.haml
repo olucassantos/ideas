@@ -7,10 +7,10 @@
           %li= msg
 
   .field
-    Id da Ideia
-    = f.number_field :theory_id
+    %p#label Selecione o Usuário
+    = f.collection_select :theory_id, Theory.all, :id , :title, name: 'adoption[theory_id]'
   .field
-    Id do Usuario
-    = f.number_field :user_id
+    %p#label Selecione o Usuário
+    = f.collection_select :user_id, User.all, :id , :name, name: 'adoption[user_id]'
   .actions
-    = f.submit 'Salvar', class:"linkButton"
+    = f.submit 'Salvar', class: 'enter'

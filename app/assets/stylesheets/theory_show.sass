@@ -1,0 +1,214 @@
+@import compass
+//Color Schema
+$highColor: #046380
+$lightColor: #e6e2af
+$ultralColor: #efecca
+$shadowColor: #33332d
+$neutralColor: #fff8e3
+
+.masterBox
+  margin-top: 100px
+  margin-bottom: 70px
+  +clearfix
+  & .data
+    width: 980px
+    margin: 0 auto
+    & .presentation#tips
+      & #presentation
+        background-color: #BBFFFF
+    & .presentation
+      & #presentation
+        +clearfix
+        background-color: $lightColor
+        padding-left: 15px
+        padding-top: 15px
+        padding-bottom: 15px
+        border-radius: 16px
+        & .image
+          float: left
+          & .logoTheory
+            background-color: $shadowColor
+            width: 298px
+            height: 198px
+            text-align: center
+            border-radius: 4px
+            img
+              margin-top: 5px
+              width: 288px
+              height: 188px
+          & .votes
+            width: 298px
+            height: 22px
+            & #up
+              margin-top: 4px
+              background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
+              width: 147px
+              background-color: green
+              float: left
+              text-align: center
+              border-radius: 3px
+              box-shadow: -2px -2px 1px #000
+            & #down
+              margin-top: 4px
+              margin-left: 3px
+              background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
+              border-radius: 3px
+              float: left
+              width: 147px
+              background-color: red
+              text-align: center
+              box-shadow: -2px -2px 1px #000
+          & .favorite
+            margin-top: 10px
+            background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,.4))
+            border-radius: 3px
+            width: 298px
+            background-color: yellow
+            text-align: center
+            box-shadow: -2px -2px 1px #000
+          & .donation
+            text-align: center
+            margin-top: 10px
+        & .brief
+          width: 600px
+          float: left
+          color: $shadowColor
+          margin-left: 10px
+          & p#title
+            font-weight: bold
+            text-shadow: -1px -1px 1px #000
+            font-size: 30px
+            text-align: center
+            margin-bottom: 0
+          & p#author
+            margin: 0 auto
+            text-align: center
+            font-size: 15px
+            font-style: italic
+            & a
+              text-decoration: none
+              color: $shadowColor
+              &:hover
+                background-color: $lightColor
+                border-radius: 4px
+                transition: all 5s
+          & p#brief
+            font-size: 18px
+            text-align: center
+          & p#adopte
+            text-align: center
+            font-size: 30px
+            font-weight: bold
+            text-shadow: -1px -1px 1px #000
+            a
+              text-decoration: none
+              color: $shadowColor
+    .content#tips
+      background-color: #E0FFFF
+    .content
+      margin-top: 20px
+      margin-bottom: 20px
+      box-shadow: -3px -3px 20px #000
+      border-radius: 16px
+      background-color: $ultralColor
+      padding: 0 10px 10px 10px
+      & h1
+        font-size: 26px
+        text-align: center
+        text-shadow: -1px -1px 1px #000
+        color: $shadowColor
+      & h2
+        text-align: center
+        font-size: 26px
+        color: $highColor
+        text-shadow: -1px -1px 1px #000
+  .adoptions
+    +clearfix
+    text-align: center
+    width: 980px
+    margin: 0 auto
+    background-color: $ultralColor
+    margin-top: 20px
+    margin-bottom: 20px
+    padding-bottom: 10px
+    border-radius: 16px
+    box-shadow: -3px -3px 20px #000
+    & h2
+      font-weight: bold
+      text-shadow: -1px -1px 1px #000
+      font-size: 30px
+      text-align: center
+      margin-bottom: 0
+      color: $shadowColor
+    & .users
+      +clearfix
+      margin: 0 auto
+      width: 800px
+    & .image
+      float: left
+      text-align: center
+      background: $shadowColor
+      border-radius: 4px
+      width: 60px
+      height: 60px
+      margin-left: 5px
+      & img#adopter
+        margin-top: 5px
+        height: 50px
+        width: 50px
+  .adminPanel
+    +clearfix
+    text-align: center
+    width: 980px
+    margin: 0 auto
+    background-color: #CD5C5C
+    margin-top: 20px
+    margin-bottom: 20px
+    padding-bottom: 10px
+    border-radius: 16px
+    box-shadow: -3px -3px 20px #000
+    & .buttons
+      margin: 0 auto
+      width: 441px
+      +clearfix
+      & .button
+        background-color: $ultralColor
+        width: 200px
+        float: left
+        margin-left: 20px
+        margin-top: 10px
+        border-radius: 6px
+        & a
+          text-decoration: none
+          color: $shadowColor
+          text-shadow: -1px -1px 1px #000
+          font-size: 20px
+          &:hover
+            transition: all 15s
+            color: red
+  .socialPlugins
+    width: 980px
+    margin: 0 auto
+    .links
+      +clearfix
+      margin: 0 auto
+      width: 500px
+      .twitter
+        float: left
+        margin-left: 67px
+      .google
+        float: left
+        margin-left: 67px
+      .reddit
+        float: left
+        margin-left: 67px
+      .like
+        float: left
+
+
+
+
+
+
+
+

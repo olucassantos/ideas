@@ -1,4 +1,8 @@
 pt-BR:
+  form:
+    file_field: "Escolha um arquivos"
+    buttons:
+      file_field: "Escolha um arquivo"
   date:
     abbr_day_names:
     - Dom
@@ -211,6 +215,7 @@ pt-BR:
     errors:
       <<: *errors
     models:
+      tip: "Dica"
       user : "Usuário"
       theory : "Ideia"
       journal: "Diário"
@@ -218,6 +223,12 @@ pt-BR:
       categories: "Categorias"
       admins: "Administradores"
     attributes:
+       tip:
+        title: "Titulo"
+        description: "Descrição"
+        brief: "Resumo"
+        view: "Visualizações"
+        tags: "Palavras chaves"
        user:
         name: "Nome"
         email: "E-mail"
@@ -225,6 +236,7 @@ pt-BR:
         tested: "Autenticação"
         age: "Idade"
         phone: "Telefone"
+        about: "Sobre"
        theory:
         title: "Título"
         description: "Descrição"
